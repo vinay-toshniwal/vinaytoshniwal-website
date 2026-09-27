@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vinaytoshniwal.com/sitemap.xml
