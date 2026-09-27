@@ -1,0 +1,42 @@
+RewriteEngine On
+# Redirect old URLs to /blog/
+RewriteRule ^google-business-profile-suspended-help/?$ /blog/google-business-profile-suspended-help/ [R=301,L,NC]
+RewriteRule ^remove-gbp-spam-improve-rankings/?$ /blog/remove-gbp-spam-improve-rankings/ [R=301,L,NC]
+RewriteRule ^how-to-make-google-reviews-show-up/?$ /blog/how-to-make-google-reviews-show-up/ [R=301,L,NC]
+RewriteRule ^google-business-profile-suspension-drama-a-real-world-case-study/?$ /blog/google-business-profile-suspension-drama-a-real-world-case-study/ [R=301,L,NC]
+RewriteRule ^the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/?$ /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/ [R=301,L,NC]
+# Skip redirected URL
+RewriteRule ^blog/sample-post/?$ /blog/ [R=301,L]
+# Internally rewrite /page/ to page.html
+RewriteCond %{REQUEST_URI} !^/blog/sample-post/?$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/$ $1.html [L]
+# Remove .html from URL
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?] [NC]
+RewriteRule ^([^.]+)\.html$ /$1/ [R=301,L]
+# Force trailing slash
+ErrorDocument 404 /404.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{1,5}$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+# Internally rewrite /page/ to page.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/$ $1.html [L]
+RewriteCond %{REQUEST_URI} ^/check-your-ranking/?$ [NC]
+RewriteRule ^ https://vinaytoshniwal.com/ [R=301,L]
+RewriteCond %{REQUEST_URI} ^/category/google-business-profile-help/?$ [NC]
+RewriteRule ^ https://vinaytoshniwal.com/ [R=301,L]
+Redirect 301 "/assets/Vinay-Toshniwals-DIY-guide-illustration-on-fixing-suspended-Google-Business-Profiles-a-expert-support-for-reinstatement-with-step-by-step-help.webp" "/assets/vinay-toshniwal-gbp-reinstatement-guide.webp"
+# 2. Redirect www to non-www (preserves path automatically)
+RewriteCond %{HTTP_HOST} ^www\.vinaytoshniwal\.com$ [NC]
+RewriteRule ^ https://vinaytoshniwal.com%{REQUEST_URI} [R=301,L]
+# Skip redirected URL
+RewriteRule ^blog/sample-post/?$ /blog/ [R=301,L]
+# Internally rewrite /page/ to page.html
+RewriteCond %{REQUEST_URI} !^/blog/sample-post/?$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/$ $1.html [L]
