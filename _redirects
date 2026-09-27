@@ -30,3 +30,7 @@
 #   "page/index.html" automatically) - no _redirects rule needed.
 # - 404 handling: Cloudflare Pages automatically serves 404.html from
 #   the site root for any unmatched path - no ErrorDocument directive needed.
+
+# --- Leftover dev-template link removed from blog/index.html (Sep 2026) ---
+# Safety net in case anything still links/crawls to the old dead reference
+/blog/blog-post-template  /blog/  301
