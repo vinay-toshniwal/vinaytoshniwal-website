@@ -3551,8 +3551,17 @@ function isNearViewport(el) {
   const vh = window.innerHeight || document.documentElement.clientHeight;
   return r.top < vh + 200 && r.bottom > -200;
 }
+function sweepReveal() {
+  revealEls.forEach(el => {
+    if (!el.classList.contains('visible') && isNearViewport(el)) {
+      el.classList.add('visible');
+      if (io) io.unobserve(el);
+    }
+  });
+}
+let io = null;
 if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
+  io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
@@ -3561,17 +3570,21 @@ if ('IntersectionObserver' in window) {
     if (isNearViewport(el)) { el.classList.add('visible'); }
     else { io.observe(el); }
   });
-  window.addEventListener('load', () => {
-    revealEls.forEach(el => {
-      if (!el.classList.contains('visible') && isNearViewport(el)) {
-        el.classList.add('visible');
-        io.unobserve(el);
-      }
-    });
-  });
 } else {
   revealEls.forEach(el => el.classList.add('visible'));
 }
+/* Safety net: catches anything the observer misses (programmatic
+   scrolls, instant anchor jumps, back/forward navigation, etc.) */
+let sweepTimer = null;
+function scheduleSweep() {
+  if (sweepTimer) return;
+  sweepTimer = setTimeout(() => { sweepTimer = null; sweepReveal(); }, 120);
+}
+window.addEventListener('load', sweepReveal);
+window.addEventListener('scroll', scheduleSweep, { passive: true });
+window.addEventListener('resize', scheduleSweep);
+window.addEventListener('hashchange', scheduleSweep);
+window.addEventListener('pageshow', sweepReveal);
 </script>
 </body>
 </html>
