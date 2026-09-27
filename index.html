@@ -4183,12 +4183,32 @@ Response time: usually within 12 to 24 hours.
 
   /* ── Scroll reveal ── */
   const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  function isNearViewport(el) {
+    const r = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    return r.top < vh + 200 && r.bottom > -200;
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+    revealEls.forEach(el => {
+      if (isNearViewport(el)) { el.classList.add('visible'); }
+      else { io.observe(el); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => io.observe(el));
+    window.addEventListener('load', () => {
+      revealEls.forEach(el => {
+        if (!el.classList.contains('visible') && isNearViewport(el)) {
+          el.classList.add('visible');
+          io.unobserve(el);
+        }
+      });
+    });
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
 
   /* ── Checklist toggle ── */
   function toggleCheck(el) {
