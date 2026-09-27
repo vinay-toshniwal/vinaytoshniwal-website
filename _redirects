@@ -4,11 +4,11 @@
 # Docs: https://developers.cloudflare.com/pages/configuration/redirects/
 
 # --- Old flat blog URLs -> /blog/... ---
-/google-business-profile-suspended-help  /blog/google-business-profile-suspended-help  301
-/remove-gbp-spam-improve-rankings  /blog/remove-gbp-spam-improve-rankings  301
-/how-to-make-google-reviews-show-up  /blog/how-to-make-google-reviews-show-up  301
-/google-business-profile-suspension-drama-a-real-world-case-study  /blog/google-business-profile-suspension-drama-a-real-world-case-study  301
-/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  301
+/google-business-profile-suspended-help  /blog/google-business-profile-suspended-help/  301
+/remove-gbp-spam-improve-rankings  /blog/remove-gbp-spam-improve-rankings/  301
+/how-to-make-google-reviews-show-up  /blog/how-to-make-google-reviews-show-up/  301
+/google-business-profile-suspension-drama-a-real-world-case-study  /blog/google-business-profile-suspension-drama-a-real-world-case-study/  301
+/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
 
 # --- Retired sample/placeholder post -> blog index ---
 /blog/sample-post  /blog/  301
