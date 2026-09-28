@@ -3505,10 +3505,18 @@ details[open] .faq-question::after {
 
 .faq-answer {
   padding: 0 28px 28px;
-  color: var(--text-muted, #6b7280);
+  color: var(--text, #C0CEE2);
   font-size: 15px;
   line-height: 1.8;
   animation: faqFadeIn 0.3s ease-in-out;
+}
+
+.faq-answer p {
+  margin: 0 0 16px;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes faqFadeIn {
@@ -3525,6 +3533,14 @@ details[open] .faq-question::after {
 @media(max-width: 540px) {
   .faq-section {
     padding: 64px 0;
+  }
+  .faq-question {
+    padding: 20px 20px;
+    font-size: 15.5px;
+  }
+  .faq-answer {
+    padding: 0 20px 24px;
+    font-size: 14.5px;
   }
 }
 </style>
