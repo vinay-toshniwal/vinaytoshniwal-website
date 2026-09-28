@@ -165,6 +165,23 @@
   @media (max-width: 1080px){.blog-layout{grid-template-columns:1fr}.sidebar-card{position:static}.blog-grid{grid-template-columns:1fr 1fr}.related-grid{grid-template-columns:1fr 1fr}.footer__top{grid-template-columns:1fr 1fr}}
   @media (max-width: 900px){:root{--sec-y:62px}.nav__links,.nav__cta{display:none}.nav__toggle{display:inline-flex}.nav__inner{min-height:70px}.blog-grid,.related-grid{grid-template-columns:1fr}.footer__top{grid-template-columns:1fr 1fr}.article-card{padding:24px}}
   @media (max-width: 560px){:root{--sec-y:52px}.hero-title,.article-title{font-size:clamp(30px,10vw,42px)}.blog-card__graphic{height:160px}.blog-card__body{height:auto;padding:20px}.card,.sidebar-card{padding:20px}.footer__top{grid-template-columns:1fr}.whatsapp-msg{font-size:12px;max-width:180px}}
+  .nav__item{position:relative}
+  .nav__item > a{display:flex;align-items:center;gap:5px}
+  .nav__caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.7;transition:transform .18s ease}
+  .nav__item:hover .nav__caret,.nav__item:focus-within .nav__caret{transform:rotate(225deg);margin-top:2px}
+  .nav__dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);min-width:240px;background:var(--navy-mid);border:1px solid rgba(201,168,76,.18);border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.35);padding:8px;list-style:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .16s ease,transform .16s ease;z-index:200}
+  .nav__item:hover .nav__dropdown,.nav__item:focus-within .nav__dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .nav__dropdown a{display:block;padding:10px 14px;border-radius:8px;font-size:14px;color:rgba(255,255,255,.82);white-space:nowrap;transition:background .16s ease,color .16s ease}
+  .nav__dropdown a:hover,.nav__dropdown a:focus-visible{background:rgba(255,255,255,.06);color:var(--gold)}
+  @media (max-width:900px){
+    .mobile-submenu{display:grid;gap:2px;padding-left:14px;margin:2px 0 8px}
+    .mobile-submenu a{font-size:14px;font-weight:500;padding:10px 14px;color:rgba(255,255,255,.7)}
+    .mobile-menu-group__label{display:flex;align-items:center;justify-content:space-between;padding:14px;font-size:15px;font-weight:600;color:rgba(255,255,255,.9);cursor:pointer;border-radius:10px}
+    .mobile-menu-group__label:hover{background:rgba(255,255,255,.04)}
+    .mobile-menu-group__label .nav__caret{border-color:rgba(255,255,255,.7);transition:transform .18s ease}
+    .mobile-menu-group.is-open .mobile-menu-group__label .nav__caret{transform:rotate(225deg);margin-top:2px}
+    .mobile-menu-group:not(.is-open) .mobile-submenu{display:none}
+  }
 </style>
 
 <title>Blog Post Template: Vinay Toshniwal</title>
@@ -187,24 +204,60 @@
     <div id="top" aria-hidden="true"></div>
     <a class="nav__logo" href="https://vinaytoshniwal.com/" aria-label="Vinay Toshniwal home">Vinay <span>Toshniwal</span></a>
     <ul class="nav__links">
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#why">Why Suspended</a></li>
-      <li><a href="index.html#process">Process</a></li>
-      <li><a href="index.html#reviews">Reviews</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
-      <li><a href="index.html#about">About</a></li>
+      <li class="nav__item">
+        <a href="https://vinaytoshniwal.com/#services">Services <span class="nav__caret" aria-hidden="true"></span></a>
+        <ul class="nav__dropdown">
+          <li><a href="https://vinaytoshniwal.com/google-business-profile-reinstatement/">GBP Reinstatement</a></li>
+          <li><a href="https://vinaytoshniwal.com/#services">Negative Review Removal</a></li>
+          <li><a href="https://vinaytoshniwal.com/#services">Spam Business Profile Removal</a></li>
+          <li><a href="https://vinaytoshniwal.com/#services">White Label Reinstatement</a></li>
+          <li><a href="https://vinaytoshniwal.com/#services">GBP Compliance &amp; Protection</a></li>
+          <li><a href="https://vinaytoshniwal.com/#services">GBP Live Training</a></li>
+        </ul>
+      </li>
+      <li><a href="https://vinaytoshniwal.com/#why">Why Suspended</a></li>
+      <li><a href="https://vinaytoshniwal.com/#reviews">Reviews</a></li>
+      <li class="nav__item">
+        <a href="https://vinaytoshniwal.com/blog" class="active">Blog <span class="nav__caret" aria-hidden="true"></span></a>
+        <ul class="nav__dropdown">
+          <li><a href="https://vinaytoshniwal.com/blog">All Articles</a></li>
+          <li><a href="https://vinaytoshniwal.com/blog?category=help">Help</a></li>
+          <li><a href="https://vinaytoshniwal.com/blog?category=tips">Tips and Tricks</a></li>
+          <li><a href="https://vinaytoshniwal.com/blog?category=case-studies">Case Studies</a></li>
+          <li><a href="https://vinaytoshniwal.com/blog?category=updates">Updates</a></li>
+        </ul>
+      </li>
+      <li><a href="https://vinaytoshniwal.com/#about">About</a></li>
     </ul>
-    <a href="index.html#contact" class="btn btn-primary nav__cta">Get Help Now</a>
+    <a href="https://vinaytoshniwal.com/#contact" class="btn btn-primary nav__cta">Get Help Now</a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span class="nav__toggle-icon"></span></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu" hidden>
   <div class="container mobile-menu__inner">
-    <a href="https://vinaytoshniwal.com/#services">Services</a>
+    <div class="mobile-menu-group">
+      <div class="mobile-menu-group__label">Services <span class="nav__caret" aria-hidden="true"></span></div>
+      <div class="mobile-submenu">
+      <a href="https://vinaytoshniwal.com/google-business-profile-reinstatement/">GBP Reinstatement</a>
+      <a href="https://vinaytoshniwal.com/#services">Negative Review Removal</a>
+      <a href="https://vinaytoshniwal.com/#services">Spam Business Profile Removal</a>
+      <a href="https://vinaytoshniwal.com/#services">White Label Reinstatement</a>
+      <a href="https://vinaytoshniwal.com/#services">GBP Compliance &amp; Protection</a>
+      <a href="https://vinaytoshniwal.com/#services">GBP Live Training</a>
+      </div>
+    </div>
     <a href="https://vinaytoshniwal.com/#why">Why Suspended</a>
-    <a href="https://vinaytoshniwal.com/#process">Process</a>
     <a href="https://vinaytoshniwal.com/#reviews">Reviews</a>
-    <a href="https://vinaytoshniwal.com/blog">Blog</a>
+    <div class="mobile-menu-group">
+      <div class="mobile-menu-group__label">Blog <span class="nav__caret" aria-hidden="true"></span></div>
+      <div class="mobile-submenu">
+      <a href="https://vinaytoshniwal.com/blog">All Articles</a>
+      <a href="https://vinaytoshniwal.com/blog?category=help">Help</a>
+      <a href="https://vinaytoshniwal.com/blog?category=tips">Tips and Tricks</a>
+      <a href="https://vinaytoshniwal.com/blog?category=case-studies">Case Studies</a>
+      <a href="https://vinaytoshniwal.com/blog?category=updates">Updates</a>
+      </div>
+    </div>
     <a href="https://vinaytoshniwal.com/#about">About</a>
     <a href="https://vinaytoshniwal.com/#contact">Get Help Now</a>
   </div>
@@ -417,6 +470,20 @@
   links.forEach(link => link.addEventListener('click', () => { isOpen = false; sync(); }));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { isOpen = false; sync(); } });
   window.addEventListener('resize', () => { if (window.innerWidth > 900 && isOpen) { isOpen = false; sync(); } });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.mobile-menu-group__label').forEach(function(label){
+    label.setAttribute('role','button');
+    label.setAttribute('tabindex','0');
+    var group = label.closest('.mobile-menu-group');
+    function toggle(){ group.classList.toggle('is-open'); }
+    label.addEventListener('click', toggle);
+    label.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
 })();
 </script>
 </body>
