@@ -88,18 +88,26 @@
   .article-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
   .article-meta__item{display:inline-flex;align-items:center;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.22);color:rgba(255,255,255,.82);font-size:12.5px;font-weight:600}
   .article-shell{max-width:1080px;margin:0 auto}
+  .article-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;align-items:start}
   .article-card{padding:34px}
-  .article-card p{font-size:17px;line-height:1.88;color:var(--text-body);margin-bottom:20px}
-  .article-card h2{font-family:var(--font-display);font-size:28px;line-height:1.15;color:var(--navy);margin:34px 0 14px}
-  .article-card h3{font-family:var(--font-display);font-size:21px;line-height:1.2;color:var(--navy);margin:26px 0 12px}
-  .article-card h4{font-family:var(--font-display);font-size:18px;line-height:1.2;color:var(--navy);margin:22px 0 10px}
-  .article-card ul,.article-card ol{padding-left:22px;margin:0 0 22px}
+  .article-card p{font-size:17px;line-height:1.88;color:var(--text-body);margin-bottom:20px;max-width:700px}
+  .article-card h2{font-family:var(--font-display);font-size:28px;line-height:1.15;color:var(--navy);margin:46px 0 16px;max-width:700px;padding-top:28px;border-top:1px solid var(--border)}
+  .article-card>h2:first-of-type,.article-card .article-hero-img+h2{border-top:none;padding-top:0;margin-top:34px}
+  .article-card h3{font-family:var(--font-display);font-size:21px;line-height:1.2;color:var(--navy);margin:26px 0 12px;max-width:700px}
+  .article-card h4{font-family:var(--font-display);font-size:18px;line-height:1.2;color:var(--navy);margin:22px 0 10px;max-width:700px}
+  .article-card ul,.article-card ol{padding-left:22px;margin:0 0 22px;max-width:700px}
   .article-card li{margin-bottom:10px;color:var(--text-body);line-height:1.82}
-  .article-highlight{padding:18px 20px;border-left:3px solid var(--gold);border-radius:0 14px 14px 0;background:#fbfaf7;margin:24px 0}
+  .article-highlight{padding:18px 20px;border-left:3px solid var(--gold);border-radius:0 14px 14px 0;background:#fbfaf7;margin:24px 0;max-width:700px}
+  .article-highlight p{max-width:none}
   .article-highlight p:last-child{margin-bottom:0}
   .article-cta{margin-top:28px;padding:26px;border-radius:18px;background:linear-gradient(135deg,#0d1b2e 0%,#142338 100%);color:var(--white)}
-  .article-cta p{color:rgba(255,255,255,.72);margin-bottom:16px}
+  .article-cta p{color:rgba(255,255,255,.72);margin-bottom:16px;max-width:none}
   .cta-title{font-size:28px;line-height:1.12;margin-bottom:10px}
+  .toc-sidebar{position:sticky;top:108px;background:#fbfaf7;border:1px solid var(--border);border-radius:16px;padding:24px}
+  .toc-sidebar .toc__title{font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .toc-sidebar .toc__list{list-style:none;display:grid;gap:2px}
+  .toc-sidebar .toc__list a{display:block;font-size:14px;font-weight:500;color:var(--text-muted);transition:color .2s,background .2s;padding:9px 10px;border-radius:8px;line-height:1.4}
+  .toc-sidebar .toc__list a:hover{color:var(--navy);background:rgba(201,168,76,.1)}
   .article-hero-img{width:100%;border-radius:16px;margin-bottom:28px;overflow:hidden}
   .article-hero-img img{width:100%;height:auto;display:block}
   .victory-box{text-align:center;padding:28px;background:linear-gradient(135deg,#0a3a1a,#0d5c28);border-radius:18px;margin:28px 0;color:#fff}
@@ -108,26 +116,12 @@
   .takeaway-list{list-style:none;padding:0;display:grid;gap:14px;margin:0 0 22px}
   .takeaway-list li{display:flex;gap:12px;padding:14px 16px;background:#fbfaf7;border-radius:12px;border:1px solid var(--border);font-size:16px;line-height:1.65}
   .takeaway-list li::before{content:'✔️';flex-shrink:0;font-size:16px}
-  .blog-card{overflow:hidden}
-  .blog-card__graphic{position:relative;height:190px;background:linear-gradient(135deg,#132238 0%,#1e3452 55%,#2b4770 100%);overflow:hidden;border-bottom:1px solid rgba(201,168,76,.12)}
-  .blog-card__graphic::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 24%,rgba(201,168,76,.18) 0,rgba(201,168,76,0) 36%),radial-gradient(circle at 82% 75%,rgba(255,255,255,.08) 0,rgba(255,255,255,0) 28%)}
-  .blog-badge{position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.92);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(4px)}
-  .blog-art{position:absolute;inset:0}
-  .blog-shape{position:absolute;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);backdrop-filter:blur(2px);box-shadow:0 8px 26px rgba(0,0,0,.14)}
-  .blog-lines{position:absolute;left:24px;right:24px;bottom:24px;height:68px;padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
-  .blog-lines span{display:block;height:7px;border-radius:999px;background:rgba(255,255,255,.82);margin-bottom:10px}
-  .blog-lines span:nth-child(1){width:74%}.blog-lines span:nth-child(2){width:92%;opacity:.88}.blog-lines span:nth-child(3){width:58%;opacity:.72;margin-bottom:0}
-  .blog-graphic--ranking .blog-shape.one{width:44px;height:96px;left:34px;bottom:32px;background:rgba(201,168,76,.22)}
-  .blog-graphic--ranking .blog-shape.two{width:44px;height:128px;left:92px;bottom:32px;background:rgba(201,168,76,.36)}
-  .blog-graphic--ranking .blog-shape.three{width:44px;height:154px;left:150px;bottom:32px;background:rgba(201,168,76,.5)}
-  .blog-graphic--ranking .blog-shape.four{width:150px;height:110px;right:28px;top:44px}
-  .blog-graphic--guide .blog-shape.one{width:140px;height:110px;top:54px;left:28px}
-  .blog-graphic--guide .blog-shape.two{width:110px;height:80px;top:34px;right:36px}
-  .blog-graphic--guide .blog-shape.three{width:64px;height:64px;top:92px;right:88px;border-radius:50%}
-  .blog-graphic--policy .blog-shape.one{width:128px;height:96px;left:34px;top:44px}
-  .blog-graphic--policy .blog-shape.two{width:76px;height:76px;right:48px;top:54px;border-radius:50%;background:rgba(201,168,76,.24)}
-  .blog-graphic--policy .blog-shape.three{width:160px;height:54px;right:24px;bottom:34px}
-  .blog-card__body{padding:24px;display:flex;flex-direction:column;height:calc(100% - 190px)}
+  .blog-card{overflow:hidden;display:flex;flex-direction:column}
+  .blog-card__graphic{position:relative;height:190px;overflow:hidden;border-bottom:1px solid rgba(201,168,76,.12);background:linear-gradient(135deg,#132238 0%,#1e3452 55%,#2b4770 100%)}
+  .blog-card__graphic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+  .blog-card:hover .blog-card__graphic img{transform:scale(1.05)}
+  .blog-badge{position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(13,27,46,.55);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.95);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(4px)}
+  .blog-card__body{padding:24px;display:flex;flex-direction:column;flex:1}
   .blog-card__date{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
   .blog-card__title{font-family:var(--font-display);font-size:23px;line-height:1.18;color:var(--navy);margin-bottom:10px;letter-spacing:-.02em}
   .blog-card__text{font-size:15px;color:var(--text-muted);line-height:1.72;margin-bottom:18px;flex:1}
@@ -150,6 +144,7 @@
   .whatsapp-float{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .25s ease}
   .whatsapp-float:hover{transform:scale(1.08)}
   .whatsapp-float img{width:30px;height:30px}
+  @media(max-width:1080px){.article-layout{grid-template-columns:1fr}.toc-sidebar{position:static}}
   @media(max-width:900px){:root{--sec-y:62px}.nav__links,.nav__cta{display:none}.nav__toggle{display:inline-flex}.nav__inner{min-height:70px}.related-grid{grid-template-columns:1fr}.footer__top{grid-template-columns:1fr 1fr}.article-card{padding:24px}}
   @media(max-width:560px){:root{--sec-y:52px}.article-title{font-size:clamp(30px,10vw,42px)}.footer__top{grid-template-columns:1fr}}
 </style>
@@ -213,6 +208,7 @@
 
 <section class="section">
   <div class="container article-shell">
+    <div class="article-layout">
     <article class="article-card card">
 
       <div class="article-hero-img">
@@ -221,7 +217,7 @@
 
       <p>In the world of Google Business Profile management, you might think you've seen it all, until a case like this comes along. Grab a cup of coffee, because this one is a gripping episode filled with twists, turns, and a happy ending.</p>
 
-      <h2>The Suspended But "Live" Profile</h2>
+      <h2 id="the-suspended-but-live-profile">The Suspended But "Live" Profile</h2>
       <p>It all began with a <strong>soft suspension</strong>. For those unfamiliar with the term: a soft suspension means the profile is live and visible on Google, but the owner has <strong>no access</strong> to manage it. Strange? Yes. Manageable? Also yes.</p>
       <p>Our client (let's call him Mr. A) was planning to move his shop to a new location, so all his documents reflected the new address. He thought, "Why rush? The profile is still live and the leads are rolling in!" Little did we know, this was the calm before the storm.</p>
 
@@ -236,7 +232,7 @@
       <h3>A New Profile Appears</h3>
       <p>To our surprise, the reinstatement didn't restore the original profile. Instead, a <strong>shiny new profile appeared with zero reviews</strong>. And the old profile? Still out there, but now someone else had access to it. The original profile had been hijacked.</p>
 
-      <h2>The Battle for the Old Profile</h2>
+      <h2 id="the-battle-for-the-old-profile">The Battle for the Old Profile</h2>
       <p>Determined to reclaim the original profile (because reviews matter!), we filed an <strong>ownership request</strong>. Unsurprisingly, it got rejected. We didn't stop there.</p>
       <p>Since Mr. A still had access to the old location's mailbox, we requested a <strong>postcard verification</strong> for the original profile. For those unfamiliar: postcard verification is when Google mails a code to the business address, which can then be used to regain access.</p>
 
@@ -256,7 +252,7 @@
         <div class="victory-box__text">Profile reclaimed, with all its original reviews intact.</div>
       </div>
 
-      <h2>The Grand Finale: The Merger</h2>
+      <h2 id="the-grand-finale-the-merger">The Grand Finale: The Merger</h2>
       <p>We now had two profiles under our control:</p>
       <ol>
         <li>The old profile: original address, all the reviews.</li>
@@ -264,7 +260,7 @@
       </ol>
       <p>The final step: updating the old profile's address to the new location and <strong>merging both profiles</strong>. This consolidated the reviews and gave the business one unified, authoritative presence on Google.</p>
 
-      <h2>Lessons Learned</h2>
+      <h2 id="lessons-learned">Lessons Learned</h2>
       <ul class="takeaway-list">
         <li><strong>Take a soft suspension seriously.</strong> Just because the profile is live doesn't mean it's safe. Take timely action before someone else does.</li>
         <li><strong>Keep your documents up-to-date.</strong> You never know when you'll need them urgently.</li>
@@ -284,6 +280,18 @@
       </div>
 
     </article>
+    <aside class="toc-sidebar-wrap">
+      <nav class="toc-sidebar" aria-label="Table of contents">
+        <div class="toc__title">On This Page</div>
+        <ul class="toc__list">
+          <li><a href="#the-suspended-but-live-profile">The Suspended "Live" Profile</a></li>
+          <li><a href="#the-battle-for-the-old-profile">The Battle for the Old Profile</a></li>
+          <li><a href="#the-grand-finale-the-merger">The Grand Finale: The Merger</a></li>
+          <li><a href="#lessons-learned">Lessons Learned</a></li>
+        </ul>
+      </nav>
+    </aside>
+    </div>
   </div>
 </section>
 
@@ -294,12 +302,10 @@
     <p class="section-sub">More guides and case studies from the world of Google Business Profiles.</p>
     <div class="related-grid" style="margin-top:32px">
       <article class="blog-card card">
-        <div class="blog-card__graphic blog-graphic--guide">
+        <div class="blog-card__graphic">
           <div class="blog-badge">DIY Guide</div>
-          <div class="blog-art">
-            <div class="blog-shape one"></div><div class="blog-shape two"></div><div class="blog-shape three"></div>
-            <div class="blog-lines"><span></span><span></span><span></span></div>
-          </div>
+          <img src="https://vinaytoshniwal.com/assets/vinay-toshniwal-gbp-reinstatement-guide.webp" alt="Illustration for how to fix a suspended Google Business Profile" loading="lazy" width="400" height="190">
+        </div>
         </div>
         <div class="blog-card__body">
           <div class="blog-card__date">May 4, 2025</div>
@@ -309,12 +315,10 @@
         </div>
       </article>
       <article class="blog-card card">
-        <div class="blog-card__graphic blog-graphic--ranking">
+        <div class="blog-card__graphic">
           <div class="blog-badge">Rank Higher</div>
-          <div class="blog-art">
-            <div class="blog-shape one"></div><div class="blog-shape two"></div><div class="blog-shape three"></div><div class="blog-shape four"></div>
-            <div class="blog-lines"><span></span><span></span><span></span></div>
-          </div>
+          <img src="https://vinaytoshniwal.com/assets/Example-of-Google-Business-Profile-spam-listing.webp" alt="Example of a Google Business Profile spam listing affecting rankings" loading="lazy" width="400" height="190">
+        </div>
         </div>
         <div class="blog-card__body">
           <div class="blog-card__date">February 17, 2025</div>
@@ -324,12 +328,10 @@
         </div>
       </article>
       <article class="blog-card card">
-        <div class="blog-card__graphic blog-graphic--policy">
+        <div class="blog-card__graphic">
           <div class="blog-badge">Case Study</div>
-          <div class="blog-art">
-            <div class="blog-shape one"></div><div class="blog-shape two"></div><div class="blog-shape three"></div>
-            <div class="blog-lines"><span></span><span></span><span></span></div>
-          </div>
+          <img src="https://vinaytoshniwal.com/assets/A-visually-striking-illustration-of-a-Google-Business-Profile-with-a-major-change-being-applied-such-as-a-location-update-or-business-name-modification.webp" alt="Illustration of a Google Business Profile with a major change being applied" loading="lazy" width="400" height="190">
+        </div>
         </div>
         <div class="blog-card__body">
           <div class="blog-card__date">February 3, 2025</div>

@@ -95,29 +95,12 @@
   .hero-pill{display:inline-flex;align-items:center;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.22);color:rgba(255,255,255,.82);font-size:12.5px;font-weight:600}
   .blog-layout{display:grid;grid-template-columns:minmax(0,1fr) 0px;gap:28px;align-items:start}
   .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px; margin-top:20px;}
-  .blog-card{overflow:hidden}
-  .blog-card__graphic{position:relative;height:190px;background:linear-gradient(135deg,#132238 0%,#1e3452 55%,#2b4770 100%);overflow:hidden;border-bottom:1px solid rgba(201,168,76,.12)}
-  .blog-card__graphic::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 24%, rgba(201,168,76,.18) 0, rgba(201,168,76,0) 36%),radial-gradient(circle at 82% 75%, rgba(255,255,255,.08) 0, rgba(255,255,255,0) 28%)}
-  .blog-badge{position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.92);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(4px)}
-  .blog-art{position:absolute;inset:0}
-  .blog-shape{position:absolute;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);backdrop-filter:blur(2px);box-shadow:0 8px 26px rgba(0,0,0,.14)}
-  .blog-lines{position:absolute;left:24px;right:24px;bottom:24px;height:68px;padding:16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
-  .blog-lines span{display:block;height:7px;border-radius:999px;background:rgba(255,255,255,.82);margin-bottom:10px}
-  .blog-lines span:nth-child(1){width:74%}.blog-lines span:nth-child(2){width:92%;opacity:.88}.blog-lines span:nth-child(3){width:58%;opacity:.72;margin-bottom:0}
-  .blog-graphic--guide .blog-shape.one{width:140px;height:110px;top:54px;left:28px}
-  .blog-graphic--guide .blog-shape.two{width:110px;height:80px;top:34px;right:36px}
-  .blog-graphic--guide .blog-shape.three{width:64px;height:64px;top:92px;right:88px;border-radius:50%}
-  .blog-graphic--ranking .blog-shape.one{width:44px;height:96px;left:34px;bottom:32px;background:rgba(201,168,76,.22)}
-  .blog-graphic--ranking .blog-shape.two{width:44px;height:128px;left:92px;bottom:32px;background:rgba(201,168,76,.36)}
-  .blog-graphic--ranking .blog-shape.three{width:44px;height:154px;left:150px;bottom:32px;background:rgba(201,168,76,.5)}
-  .blog-graphic--ranking .blog-shape.four{width:150px;height:110px;right:28px;top:44px}
-  .blog-graphic--reviews .blog-shape.one{width:146px;height:90px;left:30px;top:54px}
-  .blog-graphic--reviews .blog-shape.two{width:104px;height:104px;right:34px;top:40px;border-radius:50%;background:rgba(201,168,76,.26)}
-  .blog-stars{position:absolute;right:48px;top:78px;color:#f5d27b;font-size:18px;letter-spacing:3px;font-weight:700}
-  .blog-graphic--policy .blog-shape.one{width:128px;height:96px;left:34px;top:44px}
-  .blog-graphic--policy .blog-shape.two{width:76px;height:76px;right:48px;top:54px;border-radius:50%;background:rgba(201,168,76,.24)}
-  .blog-graphic--policy .blog-shape.three{width:160px;height:54px;right:24px;bottom:34px}
-  .blog-card__body{padding:24px;display:flex;flex-direction:column;height:calc(100% - 190px)}
+  .blog-card{overflow:hidden;display:flex;flex-direction:column}
+  .blog-card__graphic{position:relative;height:190px;overflow:hidden;border-bottom:1px solid rgba(201,168,76,.12);background:linear-gradient(135deg,#132238 0%,#1e3452 55%,#2b4770 100%)}
+  .blog-card__graphic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+  .blog-card:hover .blog-card__graphic img{transform:scale(1.05)}
+  .blog-badge{position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(13,27,46,.55);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.95);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(4px)}
+  .blog-card__body{padding:24px;display:flex;flex-direction:column;flex:1}
   .blog-card__date{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
   .blog-card__title{font-size:23px;line-height:1.18;color:var(--navy);margin-bottom:10px}
   .blog-card__text{font-size:15px;color:var(--text-muted);line-height:1.72;margin-bottom:18px;flex:1}
@@ -242,14 +225,9 @@
       </div>
       <div class="blog-grid">
         <article class="blog-card card">
-          <div class="blog-card__graphic blog-graphic--guide">
+          <div class="blog-card__graphic">
             <div class="blog-badge">DIY Guide</div>
-            <div class="blog-art">
-              <div class="blog-shape one"></div>
-              <div class="blog-shape two"></div>
-              <div class="blog-shape three"></div>
-              <div class="blog-lines"><span></span><span></span><span></span></div>
-            </div>
+            <img src="https://vinaytoshniwal.com/assets/vinay-toshniwal-gbp-reinstatement-guide.webp" alt="Illustration for how to fix a suspended Google Business Profile" loading="lazy" width="400" height="190">
           </div>
           <div class="blog-card__body">
             <div class="blog-card__date">May 4, 2025</div>
@@ -259,15 +237,9 @@
           </div>
         </article>
         <article class="blog-card card">
-          <div class="blog-card__graphic blog-graphic--ranking">
+          <div class="blog-card__graphic">
             <div class="blog-badge">Rank Higher</div>
-            <div class="blog-art">
-              <div class="blog-shape one"></div>
-              <div class="blog-shape two"></div>
-              <div class="blog-shape three"></div>
-              <div class="blog-shape four"></div>
-              <div class="blog-lines"><span></span><span></span><span></span></div>
-            </div>
+            <img src="https://vinaytoshniwal.com/assets/Example-of-Google-Business-Profile-spam-listing.webp" alt="Example of a Google Business Profile spam listing affecting rankings" loading="lazy" width="400" height="190">
           </div>
           <div class="blog-card__body">
             <div class="blog-card__date">February 17, 2025</div>
@@ -277,14 +249,9 @@
           </div>
         </article>
         <article class="blog-card card">
-          <div class="blog-card__graphic blog-graphic--reviews">
+          <div class="blog-card__graphic">
             <div class="blog-badge">Reviews</div>
-            <div class="blog-art">
-              <div class="blog-shape one"></div>
-              <div class="blog-shape two"></div>
-              <div class="blog-stars">★★★★★</div>
-              <div class="blog-lines"><span></span><span></span><span></span></div>
-            </div>
+            <img src="https://vinaytoshniwal.com/assets/google-business-profile-no-reviews-showing.webp" alt="Business owner checking a Google Business Profile with no reviews showing" loading="lazy" width="400" height="190">
           </div>
           <div class="blog-card__body">
             <div class="blog-card__date">February 17, 2025</div>
@@ -294,14 +261,9 @@
           </div>
         </article>
         <article class="blog-card card">
-          <div class="blog-card__graphic blog-graphic--policy">
+          <div class="blog-card__graphic">
             <div class="blog-badge">Compliance</div>
-            <div class="blog-art">
-              <div class="blog-shape one"></div>
-              <div class="blog-shape two"></div>
-              <div class="blog-shape three"></div>
-              <div class="blog-lines"><span></span><span></span><span></span></div>
-            </div>
+            <img src="https://vinaytoshniwal.com/assets/A-visually-striking-illustration-of-a-Google-Business-Profile-with-a-major-change-being-applied-such-as-a-location-update-or-business-name-modification.webp" alt="Illustration of a Google Business Profile with a major change being applied" loading="lazy" width="400" height="190">
           </div>
           <div class="blog-card__body">
             <div class="blog-card__date">February 3, 2025</div>
@@ -311,14 +273,9 @@
           </div>
         </article>
         <article class="blog-card card">
-          <div class="blog-card__graphic blog-graphic--policy">
+          <div class="blog-card__graphic">
             <div class="blog-badge">Compliance</div>
-            <div class="blog-art">
-              <div class="blog-shape one"></div>
-              <div class="blog-shape two"></div>
-              <div class="blog-shape three"></div>
-              <div class="blog-lines"><span></span><span></span><span></span></div>
-            </div>
+            <img src="https://vinaytoshniwal.com/assets/Hacked-Profile-min.webp" alt="Illustration of a hacked Google Business Profile" loading="lazy" width="400" height="190">
           </div>
           <div class="blog-card__body">
             <div class="blog-card__date">December 2, 2024</div>
