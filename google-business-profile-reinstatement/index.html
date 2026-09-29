@@ -1232,7 +1232,7 @@ letter-spacing:.01em;
 @media (max-width:560px){
 .hero-trust-bar{
 flex-direction:column;
-align-items:flex-start;
+align-items:center;
 }
 }
 
@@ -3761,6 +3761,49 @@ window.addEventListener('scroll', scheduleSweep, { passive: true });
 window.addEventListener('resize', scheduleSweep);
 window.addEventListener('hashchange', scheduleSweep);
 window.addEventListener('pageshow', sweepReveal);
+
+/* ── Stat counter animation ── */
+function animateCounter(el, target, suffix) {
+  let start = 0;
+  const duration = 1200;
+  const step = 16;
+  const increment = target / (duration / step);
+  const timer = setInterval(() => {
+    start += increment;
+    if (start >= target) {
+      start = target;
+      clearInterval(timer);
+    }
+    el.textContent = (target >= 1000
+      ? Math.floor(start).toLocaleString()
+      : Math.floor(start)) + suffix;
+  }, step);
+}
+
+const statNums = document.querySelectorAll('.stat-num');
+const statData = [
+  { num: 10, suffix: '+' },
+  { num: 7000, suffix: '+' },
+  { num: 99, suffix: '%' }
+];
+
+statNums.forEach((el, index) => {
+  const config = statData[index] || { num: 0, suffix: '' };
+  el.dataset.target = String(config.num);
+  el.dataset.suffix = config.suffix;
+});
+
+const statIO = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const target = parseInt(entry.target.dataset.target || '0', 10);
+    const suffix = entry.target.dataset.suffix || '';
+    animateCounter(entry.target, target, suffix);
+    statIO.unobserve(entry.target);
+  });
+}, { threshold: 0.5 });
+
+statNums.forEach(el => statIO.observe(el));
 </script>
 <script>
 (function(){
