@@ -4,26 +4,47 @@
 # Docs: https://developers.cloudflare.com/pages/configuration/redirects/
 
 # --- Old flat blog URLs -> /blog/... ---
+# Each rule is duplicated with a trailing slash because Cloudflare Pages
+# _redirects matches the source path literally (no auto trailing-slash
+# handling), and Google's indexed/canonical URLs for these paths carry a
+# trailing slash - without the duplicate, that variant 404s instead of
+# redirecting (found via Search Console's Page Indexing report, Sep 2026).
 /google-business-profile-suspended-help  /blog/google-business-profile-suspended-help/  301
+/google-business-profile-suspended-help/  /blog/google-business-profile-suspended-help/  301
 /remove-gbp-spam-improve-rankings  /blog/remove-gbp-spam-improve-rankings/  301
+/remove-gbp-spam-improve-rankings/  /blog/remove-gbp-spam-improve-rankings/  301
 /how-to-make-google-reviews-show-up  /blog/how-to-make-google-reviews-show-up/  301
+/how-to-make-google-reviews-show-up/  /blog/how-to-make-google-reviews-show-up/  301
 /google-business-profile-suspension-drama-a-real-world-case-study  /blog/google-business-profile-suspension-drama-a-real-world-case-study/  301
+/google-business-profile-suspension-drama-a-real-world-case-study/  /blog/google-business-profile-suspension-drama-a-real-world-case-study/  301
 /the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
+/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
 
 # --- Retired sample/placeholder post -> blog index ---
 /blog/sample-post  /blog/  301
+/blog/sample-post/  /blog/  301
 
 # --- Old nav/category URLs that no longer exist -> homepage ---
 /check-your-ranking  /  301
+/check-your-ranking/  /  301
 /category/google-business-profile-help  /  301
+/category/google-business-profile-help/  /  301
+
+# --- Legacy pages with no current equivalent -> relevant homepage section ---
+# Both had real search impressions in Search Console; redirecting preserves
+# that instead of leaving visitors and crawlers on a dead page.
+/about-us  /#about  301
+/about-us/  /#about  301
+/contact  /#contact  301
+/contact/  /#contact  301
 
 # --- One-off renamed asset (old messy filename -> clean filename) ---
 /assets/Vinay-Toshniwals-DIY-guide-illustration-on-fixing-suspended-Google-Business-Profiles-a-expert-support-for-reinstatement-with-step-by-step-help.webp  /assets/vinay-toshniwal-gbp-reinstatement-guide.webp  301
 
 # Notes on rules intentionally NOT ported as redirects:
-# - www -> non-www: handle this in Cloudflare's DNS/SSL settings (or a
-#   custom domain "canonical" redirect) rather than here, since it's
-#   about which hostname resolves, not a path rewrite.
+# - www -> non-www: handled by a Cloudflare Redirect Rule at the zone level
+#   (added Sep 2026, once www was registered as a Pages custom domain),
+#   not here, since it's about which hostname resolves, not a path rewrite.
 # - Extensionless URL <-> .html rewriting ("/page/" serving "page.html",
 #   stripping ".html" from the visible URL): Cloudflare Pages already
 #   serves clean URLs this way natively (it looks for "page.html" or
@@ -34,3 +55,4 @@
 # --- Leftover dev-template link removed from blog/index.html (Sep 2026) ---
 # Safety net in case anything still links/crawls to the old dead reference
 /blog/blog-post-template  /blog/  301
+/blog/blog-post-template/  /blog/  301
