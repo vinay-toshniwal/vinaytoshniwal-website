@@ -20,19 +20,6 @@
 /the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
 /the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
 
-# --- Blog posts published directly under /blog/ (no legacy flat URL) ---
-# Cloudflare Pages' native clean-URL handling serves "name.html" at the
-# bare "/blog/name" path automatically, but does not also redirect the
-# trailing-slash variant to it. Each post's own canonical tag and the
-# sitemap use the trailing-slash form, so without this rule Google's
-# crawler sees the bare path and the slash path disagree and will not
-# index the page (confirmed via Search Console URL Inspection, Oct 2026,
-# on gbp-third-party-management-rules: "Page is not indexed: Page with
-# redirect", with a Google-selected canonical that fought the declared one).
-/blog/gbp-service-area-map-not-showing-usa  /blog/gbp-service-area-map-not-showing-usa/  301
-/blog/gbp-multiple-managers-account-safety  /blog/gbp-multiple-managers-account-safety/  301
-/blog/gbp-third-party-management-rules  /blog/gbp-third-party-management-rules/  301
-
 # --- Retired sample/placeholder post -> blog index ---
 /blog/sample-post  /blog/  301
 /blog/sample-post/  /blog/  301
