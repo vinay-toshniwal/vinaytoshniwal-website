@@ -516,5 +516,13 @@
   });
 })();
 </script>
+<script>
+/* Track WhatsApp clicks as a GA4 event (used as a conversion for ads) */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href*="wa.me"]');
+  if (!a || typeof gtag !== 'function') return;
+  gtag('event', 'whatsapp_click', { link_url: a.href, page_path: location.pathname });
+}, { passive: true });
+</script>
 </body>
 </html>
