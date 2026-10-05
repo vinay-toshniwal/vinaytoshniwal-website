@@ -3753,18 +3753,17 @@ details[open] .faq-question::after {
 
 /* ── Scroll reveal (matches homepage behavior) ── */
 const revealEls = document.querySelectorAll('.reveal');
-function isNearViewport(el) {
+function isNearViewport(el, vh) {
   const r = el.getBoundingClientRect();
-  const vh = window.innerHeight || document.documentElement.clientHeight;
+  vh = vh || window.innerHeight || document.documentElement.clientHeight;
   return r.top < vh + 200 && r.bottom > -200;
 }
+/* Read all positions first, then write classes, to avoid forced reflow */
 function sweepReveal() {
-  revealEls.forEach(el => {
-    if (!el.classList.contains('visible') && isNearViewport(el)) {
-      el.classList.add('visible');
-      if (io) io.unobserve(el);
-    }
-  });
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  const due = [];
+  revealEls.forEach(el => { if (!el.classList.contains('visible') && isNearViewport(el, vh)) due.push(el); });
+  due.forEach(el => { el.classList.add('visible'); if (io) io.unobserve(el); });
 }
 let io = null;
 if ('IntersectionObserver' in window) {
@@ -3773,10 +3772,11 @@ if ('IntersectionObserver' in window) {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
   }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
-  revealEls.forEach(el => {
-    if (isNearViewport(el)) { el.classList.add('visible'); }
-    else { io.observe(el); }
-  });
+  const vhNow = window.innerHeight || document.documentElement.clientHeight;
+  const nearEls = [], farEls = [];
+  revealEls.forEach(el => { (isNearViewport(el, vhNow) ? nearEls : farEls).push(el); });
+  nearEls.forEach(el => el.classList.add('visible'));
+  farEls.forEach(el => io.observe(el));
 } else {
   revealEls.forEach(el => el.classList.add('visible'));
 }
