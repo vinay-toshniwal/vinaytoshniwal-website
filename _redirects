@@ -35,6 +35,8 @@
 # that instead of leaving visitors and crawlers on a dead page.
 /about-us  /#about  301
 /about-us/  /#about  301
+/about  /#about  301
+/about/  /#about  301
 /contact  /#contact  301
 /contact/  /#contact  301
 
