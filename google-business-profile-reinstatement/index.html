@@ -2745,6 +2745,23 @@ margin-top:auto;
 @media (max-width:900px){.vt-grid{grid-template-columns:1fr;}}
 .vt-cap{padding:18px 22px 22px;}
 .vt-cap .review-meta{margin-top:4px;}
+/* Layout audit fixes (tablet and mobile spacing and alignment) */
+#reviews .section-title{margin-left:auto;margin-right:auto;}
+@media (max-width:900px){
+  .vt-grid{max-width:480px;margin-left:auto;margin-right:auto;}
+  .reviews-grid .review-card{min-height:auto !important;}
+  .about-inner .btn-group{justify-content:center;}
+}
+@media (min-width:561px) and (max-width:900px){
+  .stats__grid{grid-template-columns:repeat(3,1fr) !important;}
+  .why-grid > :last-child:nth-child(odd),
+  .cases-grid > :last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 10px);}
+}
+@media (max-width:560px){
+  .hero-trust-item{flex:0 1 auto;max-width:100%;white-space:normal;text-align:center;}
+  .hero .btn-group,.about-inner .btn-group{align-items:stretch !important;}
+  .hero .btn-group .btn,.about-inner .btn-group .btn{width:100%;justify-content:center;}
+}
 </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
