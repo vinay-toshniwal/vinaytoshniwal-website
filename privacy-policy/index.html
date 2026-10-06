@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Vinay Toshniwal</title>
+<meta name="description" content="How vinaytoshniwal.com collects and uses information, including analytics, session recordings and contact form details.">
+<link rel="canonical" href="https://vinaytoshniwal.com/privacy-policy/">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vinaytoshniwal.com/assets/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1b2e;
+    --bg-footer: #08111e;
+    --gold: #c9a84c;
+    --text: #ffffff;
+    --text-dim: rgba(255,255,255,0.74);
+    --text-dimmer: rgba(255,255,255,0.5);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+  }
+  a { text-decoration: none; }
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .logo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+  }
+  nav.top-nav {
+    display: none;
+  }
+  @media (min-width: 860px) {
+    nav.top-nav {
+      display: flex;
+      gap: 28px;
+    }
+    nav.top-nav a {
+      color: var(--text-dim);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    nav.top-nav a:hover { color: var(--text); }
+  }
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 60px;
+  }
+  .content {
+    max-width: 620px;
+    text-align: center;
+  }
+  .code {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 1;
+    color: var(--gold);
+    margin: 0 0 8px;
+    letter-spacing: -2px;
+  }
+  h1 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin: 0 0 14px;
+    color: var(--text);
+  }
+  p.lede {
+    color: var(--text-dim);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: #0d1b2e;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .helpful {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+    text-align: left;
+  }
+  .helpful h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dimmer);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 16px;
+    text-align: center;
+  }
+  .helpful ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .helpful li a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 15px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+  }
+  .helpful li a:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+  }
+  footer.site-footer {
+    background: var(--bg-footer);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  footer.site-footer p {
+    color: var(--text-dimmer);
+    font-size: 13px;
+    margin: 0;
+  }
+  footer.site-footer a {
+    color: var(--text-dimmer);
+  }
+  footer.site-footer a:hover {
+    color: var(--gold);
+  }
+
+  main.doc { display: block; max-width: 760px; margin: 0 auto; padding: 24px 24px 72px; flex: 1; }
+  .doc h1 { font-size: 34px; margin-bottom: 8px; }
+  .doc .updated { color: var(--text-dimmer); font-size: 14px; margin: 0 0 32px; }
+  .doc h2 { font-family: 'Sora', sans-serif; font-size: 20px; margin: 36px 0 10px; color: var(--gold); }
+  .doc p, .doc li { color: var(--text-dim); font-size: 16px; line-height: 1.7; }
+  .doc ul { padding-left: 22px; }
+  .doc a { color: var(--gold); text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="logo" href="/">Vinay Toshniwal</a>
+    <nav class="top-nav">
+      <a href="/#services">Services</a>
+      <a href="/#process">Process</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="doc">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: October 6, 2026</p>
+
+    <p>This page explains what information vinaytoshniwal.com collects when you visit or contact me, and how it is used. I am Vinay Toshniwal, and I run this website myself.</p>
+
+    <h2>Information you give me</h2>
+    <p>If you fill in the contact or case review form, send a message on WhatsApp, call, or email me, I receive the details you choose to share, such as your name, email address, phone number, business name and a description of your Google Business Profile problem. I use this only to reply to you, review your case and provide the service you ask about. I do not sell this information or use it for unrelated marketing.</p>
+    <p>The contact form is hosted by Zoho Forms, so the details you type into it are processed by Zoho under its own privacy policy. WhatsApp messages are handled by WhatsApp under its own terms.</p>
+
+    <h2>Information collected automatically</h2>
+    <p>I use two tools to understand how visitors use this website:</p>
+    <ul>
+      <li><strong>Google Analytics 4</strong> records page views, how long people stay, the pages they visit, the type of device and browser, the approximate location (country and city level) and which links or buttons are used, such as the WhatsApp button.</li>
+      <li><strong>Microsoft Clarity</strong> records anonymous session recordings and heatmaps that show how visitors scroll, click and move around a page, so I can find parts of the site that are confusing. Form fields and typed text are masked and are not visible to me in recordings.</li>
+    </ul>
+    <p>These tools use cookies or similar technologies. This data is combined and used only to improve the website and measure how my advertising performs. It is not used to identify you personally.</p>
+
+    <h2>Google Ads</h2>
+    <p>I run Google Ads. If you arrive from an ad, Google may record that you clicked it and whether you later contacted me, so I can measure which ads work. You can control how Google uses data for advertising at <a href="https://adssettings.google.com" rel="noopener noreferrer">adssettings.google.com</a>.</p>
+
+    <h2>Cookies</h2>
+    <p>Cookies are small files stored in your browser. You can block or delete them in your browser settings, and the website will still work. You can also opt out of Google Analytics with Google's browser add-on, and read how Microsoft handles Clarity data in the Microsoft privacy statement.</p>
+
+    <h2>Who else sees your information</h2>
+    <p>Only the services named above (Google, Microsoft, Zoho and WhatsApp) process data on my behalf. I do not sell or rent your information. I may share case details with Google only when you ask me to work on your Google Business Profile and it is needed for that work.</p>
+
+    <h2>How long I keep it</h2>
+    <p>Messages and case details are kept for as long as needed to help you and handle follow-up questions, and then deleted when no longer needed. Analytics data is kept according to the retention settings of each tool.</p>
+
+    <h2>Your choices</h2>
+    <p>You can ask me what information I hold about you, ask me to correct it, or ask me to delete it. Email me at <a href="mailto:i@vinaytoshniwal.com">i@vinaytoshniwal.com</a> and I will respond.</p>
+
+    <h2>Changes to this page</h2>
+    <p>If I change how the website collects or uses information, I will update this page and the date at the top.</p>
+
+    <h2>Contact</h2>
+    <p>Vinay Toshniwal<br><a href="mailto:i@vinaytoshniwal.com">i@vinaytoshniwal.com</a><br>WhatsApp: <a href="https://wa.me/919494891008">+919494891008</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Vinay Toshniwal · Google Business Profile Specialist &nbsp;·&nbsp; <a href="/">vinaytoshniwal.com</a></p>
+  </footer>
+</div>
+</body>
+</html>
