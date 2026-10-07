@@ -477,6 +477,10 @@
     gap: 0;
     position: relative;
   }
+  @media (min-width: 901px) {
+    .process-grid { grid-template-columns: repeat(3, 1fr); row-gap: 48px; }
+    .process-grid::before { display: none; }
+  }
   .process-grid::before {
     content: '';
     position: absolute;
@@ -2993,7 +2997,7 @@ margin-top:auto;
     <div class="section-header reveal">
       <div class="eyebrow">My Method</div>
       <h2 class="section-title section-title--light">How I Reinstate Suspended Google Business Profile</h2>
-      <p class="section-sub section-sub--light">A systematic four-step approach built on 10+ years of reinstatement experience.</p>
+      <p class="section-sub section-sub--light">A systematic six-step approach built on 10+ years of reinstatement experience.</p>
     </div>
     <div class="process-grid">
       <div class="process-step reveal" style="transition-delay:.05s">
@@ -3015,6 +3019,16 @@ margin-top:auto;
         <div class="process-num">4</div>
         <h3 class="process-title">Follow-up Until Reinstated</h3>
         <p class="process-text">Persistent follow-up and support until your profile is fully live again.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.33s">
+        <div class="process-num">5</div>
+        <h3 class="process-title">Review Restoration</h3>
+        <p class="process-text">Checking whether your reviews are restored after reinstatement. If they are not, I work on it until they are back.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.4s">
+        <div class="process-num">6</div>
+        <h3 class="process-title">Violation Report and Guide</h3>
+        <p class="process-text">You get a clear report of what went wrong, plus simple do's and don'ts from Google's guidelines to keep your profile safe.</p>
       </div>
     </div>
   </div>
