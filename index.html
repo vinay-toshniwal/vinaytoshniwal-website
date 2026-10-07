@@ -2717,7 +2717,7 @@ margin-top:auto;
           "name": "How does your Google Business Profile Reinstatement Service work, and how much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "I specialize in reinstating suspended Google Business Profiles, including difficult cases where an appeal or additional review has already been rejected. Before proceeding, I conduct a complete audit of your profile and business presence to identify potential Google Business Profile guideline violations. This can include your business name, address, phone number, website, categories, service areas, supporting documents, signage, citations, and other eligibility requirements. I then guide you through the required corrections, documentation, verification, appeal, and escalation process until the case is resolved. Pricing: USD 700 on success. You pay only after your Google Business Profile is successfully reinstated. In some cases I may request an advance, but if the reinstatement is unsuccessful, that advance is refunded in full. Certain industries or unusually complex cases may have different pricing, which will always be discussed before I begin."
+            "text": "I specialize in reinstating suspended Google Business Profiles, including difficult cases where an appeal or additional review has already been rejected. Before proceeding, I conduct a complete audit of your profile and business presence to identify potential Google Business Profile guideline violations. This can include your business name, address, phone number, website, categories, service areas, supporting documents, signage, citations, and other eligibility requirements. I then guide you through the required corrections, documentation, verification, appeal, and escalation process until the case is resolved. Pricing: USD 500 to 1,000 on success, depending on the category and violation type. You pay only after your Google Business Profile is successfully reinstated. In some cases I may request an advance, but if the reinstatement is unsuccessful, that advance is refunded in full. Certain industries or unusually complex cases may have different pricing, which will always be discussed before I begin."
           }
         },
         {
@@ -2859,7 +2859,7 @@ margin-top:auto;
 <div class="hero-trust-bar reveal" style="transition-delay:.2s">
   <div class="hero-trust-item">5.0 ★ Google Rating</div>
   <div class="hero-trust-item">GBP Product Expert</div>
-  <div class="hero-trust-item">99% Success Rate</div>
+  <div class="hero-trust-item">99.99% Success Rate</div>
   <div class="hero-trust-item">Clients Across USA • Canada • UK • Australia • India • UAE</div>
 </div>
 
@@ -2923,7 +2923,7 @@ margin-top:auto;
         <div class="stat-label">Profiles Reinstated</div>
       </div>
       <div class="stat-item reveal" style="transition-delay:.2s">
-        <div class="stat-num">99%</div>
+        <div class="stat-num">99.99%</div>
         <div class="stat-label">Success Rate</div>
       </div>
     </div>
@@ -4070,7 +4070,7 @@ Response time: usually within 12 to 24 hours.
           <p>I specialize in reinstating suspended Google Business Profiles, including difficult cases where an appeal or additional review has already been rejected.</p>
           <p>Before proceeding, I conduct a complete audit of your profile and business presence to identify potential Google Business Profile guideline violations. This can include your business name, address, phone number, website, categories, service areas, supporting documents, signage, citations, and other eligibility requirements.</p>
           <p>I then guide you through the required corrections, documentation, verification, appeal, and escalation process until the case is resolved.</p>
-          <div class="faq-price"><strong>Pricing:</strong> USD 700 on success. You pay only after your Google Business Profile is successfully reinstated. In some cases I may request an advance, but if the reinstatement is unsuccessful, that advance is refunded in full. Certain industries or unusually complex cases may have different pricing, which will always be discussed before I begin.</div>
+          <div class="faq-price"><strong>Pricing:</strong> USD 500 to 1,000 on success, depending on the category and violation type. You pay only after your Google Business Profile is successfully reinstated. In some cases I may request an advance, but if the reinstatement is unsuccessful, that advance is refunded in full. Certain industries or unusually complex cases may have different pricing, which will always be discussed before I begin.</div>
         </div>
       </details>
 
@@ -4159,7 +4159,7 @@ Response time: usually within 12 to 24 hours.
     padding: 12px 67px !important;
 ">Contact Now</a>
       </div>
-      <p class="final-trust">✓ Pay only on successful reinstatement &nbsp;·&nbsp; 99% success rate &nbsp;·&nbsp; 7,000+ profiles reinstated</p>
+      <p class="final-trust">✓ Pay only on successful reinstatement &nbsp;·&nbsp; 99.99% success rate &nbsp;·&nbsp; 7,000+ profiles reinstated</p>
     </div>
   </div>
 </section>
@@ -4299,7 +4299,7 @@ Response time: usually within 12 to 24 hours.
   }
 
   /* ── Stat counter animation ── */
-  function animateCounter(el, target, suffix) {
+  function animateCounter(el, target, suffix, decimals) {
     let start = 0;
     const duration = 1200;
     const step = 16;
@@ -4310,7 +4310,7 @@ Response time: usually within 12 to 24 hours.
         start = target;
         clearInterval(timer);
       }
-      el.textContent = (target >= 1000
+      el.textContent = (decimals ? start.toFixed(decimals) : target >= 1000
         ? Math.floor(start).toLocaleString()
         : Math.floor(start)) + suffix;
     }, step);
@@ -4320,21 +4320,22 @@ Response time: usually within 12 to 24 hours.
   const statData = [
     { num: 10, suffix: '+' },
     { num: 7000, suffix: '+' },
-    { num: 99, suffix: '%' }
+    { num: 99.99, suffix: '%', decimals: 2 }
   ];
 
   statNums.forEach((el, index) => {
     const config = statData[index] || { num: 0, suffix: '' };
     el.dataset.target = String(config.num);
     el.dataset.suffix = config.suffix;
+    el.dataset.decimals = String(config.decimals || 0);
   });
 
   const statIO = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      const target = parseInt(entry.target.dataset.target || '0', 10);
+      const target = parseFloat(entry.target.dataset.target || '0');
       const suffix = entry.target.dataset.suffix || '';
-      animateCounter(entry.target, target, suffix);
+      animateCounter(entry.target, target, suffix, parseInt(entry.target.dataset.decimals || '0', 10));
       statIO.unobserve(entry.target);
     });
   }, { threshold: 0.5 });
