@@ -841,19 +841,33 @@
   }
   #reviews .reviews-grid::-webkit-scrollbar { display: none; }
   #reviews .reviews-grid .review-card {
+    height: auto;
+    min-height: 0;
     flex: 0 0 calc((100% - 40px) / 3);
     scroll-snap-align: start;
   }
   @media (max-width: 900px) {
     #reviews .reviews-grid .review-card { flex-basis: 82%; }
   }
-  .reviews-nav { display: flex; gap: 10px; justify-content: flex-start; margin: 4px 0 24px; }
-  .reviews-nav button {
-    width: 42px; height: 42px; border-radius: 50%;
-    border: 1.5px solid var(--navy, #12203a); background: #fff; color: var(--navy, #12203a);
-    font-size: 18px; line-height: 1; cursor: pointer;
+  /* Reviews carousel: side arrows, same look as Real Case Outcomes */
+  .reviews-shell { position: relative; padding: 0 34px; }
+  .reviews-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid rgba(13,27,46,.07); background: rgba(255,255,255,.96);
+    color: var(--navy); box-shadow: 0 12px 24px rgba(13,27,46,.10);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; line-height: 1; padding: 0 0 3px; cursor: pointer;
+    transition: all .2s ease; z-index: 2;
   }
-  .reviews-nav button:hover { background: var(--gold, #c9a84c); border-color: var(--gold, #c9a84c); }
+  .reviews-btn:hover { color: var(--gold); border-color: rgba(201,168,76,.35); transform: translateY(-50%) scale(1.04); }
+  .reviews-btn:disabled { opacity: .4; cursor: default; transform: translateY(-50%); color: var(--navy); border-color: rgba(13,27,46,.07); }
+  .reviews-prev { left: 0; }
+  .reviews-next { right: 0; }
+  @media (max-width: 900px) {
+    .reviews-shell { padding: 0; }
+    .reviews-btn { display: none; }
+  }
   .review-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -3707,6 +3721,8 @@ margin-top:auto;
 </div>
     </div>
 
+    <div class="reviews-shell">
+    <button class="reviews-btn reviews-prev" id="reviewsPrev" type="button" aria-label="Previous reviews">&#8249;</button>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
@@ -3756,10 +3772,7 @@ successfully restored and back online.”
         <div class="review-meta">Google Review</div>
       </div>
     </div>
-
-    <div class="reviews-nav" aria-label="Scroll reviews">
-      <button type="button" id="reviewsPrev" aria-label="Previous reviews">&larr;</button>
-      <button type="button" id="reviewsNext" aria-label="Next reviews">&rarr;</button>
+    <button class="reviews-btn reviews-next" id="reviewsNext" type="button" aria-label="Next reviews">&#8250;</button>
     </div>
 
     <div class="review-actions">
@@ -4652,10 +4665,14 @@ document.addEventListener('click', function (e) {
 (function(){
   var g=document.querySelector('#reviews .reviews-grid');
   if(!g)return;
-  function step(d){var c=g.querySelector('.review-card');g.scrollBy({left:d*(c.offsetWidth+20),behavior:'smooth'});}
   var p=document.getElementById('reviewsPrev'),n=document.getElementById('reviewsNext');
+  function step(d){var c=g.querySelector('.review-card');g.scrollBy({left:d*(c.offsetWidth+20),behavior:'smooth'});}
+  function upd(){if(!p||!n)return;p.disabled=g.scrollLeft<=2;n.disabled=g.scrollLeft+g.clientWidth>=g.scrollWidth-2;}
   if(p)p.addEventListener('click',function(){step(-1);});
   if(n)n.addEventListener('click',function(){step(1);});
+  g.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
 })();
 </script>
 </body>
