@@ -828,9 +828,32 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
-  @media (min-width: 901px) {
-    #reviews .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Reviews: one swipeable row instead of a tall grid */
+  #reviews .reviews-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 2px 8px;
+    align-items: stretch;
   }
+  #reviews .reviews-grid::-webkit-scrollbar { display: none; }
+  #reviews .reviews-grid .review-card {
+    flex: 0 0 calc((100% - 40px) / 3);
+    scroll-snap-align: start;
+  }
+  @media (max-width: 900px) {
+    #reviews .reviews-grid .review-card { flex-basis: 82%; }
+  }
+  .reviews-nav { display: flex; gap: 10px; justify-content: flex-start; margin: 4px 0 24px; }
+  .reviews-nav button {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 1.5px solid var(--navy, #12203a); background: #fff; color: var(--navy, #12203a);
+    font-size: 18px; line-height: 1; cursor: pointer;
+  }
+  .reviews-nav button:hover { background: var(--gold, #c9a84c); border-color: var(--gold, #c9a84c); }
   .review-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -3734,6 +3757,11 @@ successfully restored and back online.”
       </div>
     </div>
 
+    <div class="reviews-nav" aria-label="Scroll reviews">
+      <button type="button" id="reviewsPrev" aria-label="Previous reviews">&larr;</button>
+      <button type="button" id="reviewsNext" aria-label="Next reviews">&rarr;</button>
+    </div>
+
     <div class="review-actions">
       <a href="https://share.google/t8IX6Bgl7s3MmA0N0" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
         See More Proof →
@@ -4619,6 +4647,16 @@ document.addEventListener('click', function (e) {
   if (!a || typeof gtag !== 'function') return;
   gtag('event', 'whatsapp_click', { link_url: a.href, page_path: location.pathname });
 }, { passive: true });
+</script>
+<script>
+(function(){
+  var g=document.querySelector('#reviews .reviews-grid');
+  if(!g)return;
+  function step(d){var c=g.querySelector('.review-card');g.scrollBy({left:d*(c.offsetWidth+20),behavior:'smooth'});}
+  var p=document.getElementById('reviewsPrev'),n=document.getElementById('reviewsNext');
+  if(p)p.addEventListener('click',function(){step(-1);});
+  if(n)n.addEventListener('click',function(){step(1);});
+})();
 </script>
 </body>
 </html>
