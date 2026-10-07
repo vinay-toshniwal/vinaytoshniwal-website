@@ -2907,6 +2907,11 @@ margin-top:auto;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window,document,"clarity","script","ytcf2gcihp");
 </script>
+<style>
+a.flow-card--link{display:block;text-decoration:none;color:inherit;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease !important}
+a.flow-card--link:hover,a.flow-card--link:focus-visible{transform:translateY(-3px);border-color:#c9a84c;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.flow-card__cta{display:block;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:13px;font-weight:600;color:#c9a84c}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -3005,7 +3010,7 @@ margin-top:auto;
         <p class="hero__trust"><span class="hero__trust-icon">✓</span> Pay only on successful reinstatement.</p>
       </div>
 
-      <div class="flow-card reveal" style="transition-delay:.15s">
+      <a class="flow-card flow-card--link reveal" href="#process" style="transition-delay:.15s" aria-label="See how the reinstatement process works">
         <div class="flow-step">
           <div class="flow-icon flow-icon--red"><img alt="Suspended profile icon" src="https://vinaytoshniwal.com/assets/suspended-profile-icon.webp" style="width:24px;height:24px;"></div>
           <div>
@@ -3034,7 +3039,8 @@ margin-top:auto;
             <div class="flow-sub">Live and protected</div>
           </div>
         </div>
-      </div>
+        <span class="flow-card__cta">See how each step works ↓</span>
+      </a>
     </div>
   </div>
 </section>
