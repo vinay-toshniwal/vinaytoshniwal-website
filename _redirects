@@ -9,16 +9,16 @@
 # handling), and Google's indexed/canonical URLs for these paths carry a
 # trailing slash - without the duplicate, that variant 404s instead of
 # redirecting (found via Search Console's Page Indexing report, Sep 2026).
-/google-business-profile-suspended-help  /blog/google-business-profile-suspended-help/  301
-/google-business-profile-suspended-help/  /blog/google-business-profile-suspended-help/  301
-/remove-gbp-spam-improve-rankings  /blog/remove-gbp-spam-improve-rankings/  301
-/remove-gbp-spam-improve-rankings/  /blog/remove-gbp-spam-improve-rankings/  301
-/how-to-make-google-reviews-show-up  /blog/how-to-make-google-reviews-show-up/  301
-/how-to-make-google-reviews-show-up/  /blog/how-to-make-google-reviews-show-up/  301
-/google-business-profile-suspension-drama-a-real-world-case-study  /blog/google-business-profile-suspension-drama-a-real-world-case-study/  301
-/google-business-profile-suspension-drama-a-real-world-case-study/  /blog/google-business-profile-suspension-drama-a-real-world-case-study/  301
-/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
-/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  301
+/google-business-profile-suspended-help  /blog/google-business-profile-suspended-help  301
+/google-business-profile-suspended-help/  /blog/google-business-profile-suspended-help  301
+/remove-gbp-spam-improve-rankings  /blog/remove-gbp-spam-improve-rankings  301
+/remove-gbp-spam-improve-rankings/  /blog/remove-gbp-spam-improve-rankings  301
+/how-to-make-google-reviews-show-up  /blog/how-to-make-google-reviews-show-up  301
+/how-to-make-google-reviews-show-up/  /blog/how-to-make-google-reviews-show-up  301
+/google-business-profile-suspension-drama-a-real-world-case-study  /blog/google-business-profile-suspension-drama-a-real-world-case-study  301
+/google-business-profile-suspension-drama-a-real-world-case-study/  /blog/google-business-profile-suspension-drama-a-real-world-case-study  301
+/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  301
+/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles/  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  301
 
 # --- Retired sample/placeholder post -> blog index ---
 /blog/sample-post  /blog/  301
@@ -58,3 +58,37 @@
 # Safety net in case anything still links/crawls to the old dead reference
 /blog/blog-post-template  /blog/  301
 /blog/blog-post-template/  /blog/  301
+
+# --- Added Oct 2026 (Search Console 404 / duplicate reports) ---
+# Old flat and .html URLs of current posts -> canonical /blog/<slug> in a single hop
+/google-business-profile-video-verification-storefront  /blog/google-business-profile-video-verification-storefront  301
+/google-business-profile-video-verification-storefront/  /blog/google-business-profile-video-verification-storefront  301
+/google-business-profile-video-verification-storefront.html  /blog/google-business-profile-video-verification-storefront  301
+/google-business-profile-video-verification-service-area-business  /blog/google-business-profile-video-verification-service-area-business  301
+/google-business-profile-video-verification-service-area-business/  /blog/google-business-profile-video-verification-service-area-business  301
+/google-business-profile-video-verification-service-area-business.html  /blog/google-business-profile-video-verification-service-area-business  301
+/six-months-another-agency-failed-google-business-profile-reinstated  /blog/six-months-another-agency-failed-google-business-profile-reinstated  301
+/six-months-another-agency-failed-google-business-profile-reinstated/  /blog/six-months-another-agency-failed-google-business-profile-reinstated  301
+/six-months-another-agency-failed-google-business-profile-reinstated.html  /blog/six-months-another-agency-failed-google-business-profile-reinstated  301
+/gbp-service-area-map-not-showing-usa  /blog/gbp-service-area-map-not-showing-usa  301
+/gbp-service-area-map-not-showing-usa/  /blog/gbp-service-area-map-not-showing-usa  301
+/gbp-service-area-map-not-showing-usa.html  /blog/gbp-service-area-map-not-showing-usa  301
+/gbp-multiple-managers-account-safety  /blog/gbp-multiple-managers-account-safety  301
+/gbp-multiple-managers-account-safety/  /blog/gbp-multiple-managers-account-safety  301
+/gbp-multiple-managers-account-safety.html  /blog/gbp-multiple-managers-account-safety  301
+/gbp-third-party-management-rules  /blog/gbp-third-party-management-rules  301
+/gbp-third-party-management-rules/  /blog/gbp-third-party-management-rules  301
+/gbp-third-party-management-rules.html  /blog/gbp-third-party-management-rules  301
+/google-business-profile-suspended-help.html  /blog/google-business-profile-suspended-help  301
+/remove-gbp-spam-improve-rankings.html  /blog/remove-gbp-spam-improve-rankings  301
+/how-to-make-google-reviews-show-up.html  /blog/how-to-make-google-reviews-show-up  301
+/google-business-profile-suspension-drama-a-real-world-case-study.html  /blog/google-business-profile-suspension-drama-a-real-world-case-study  301
+/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles.html  /blog/the-suspension-saga-a-tale-of-two-twisted-google-business-profiles  301
+# Directory-index style URLs -> clean URL
+/blog/:slug/index.html  /blog/:slug  301
+/index/blog/  /blog/  301
+# Legacy pages with no current equivalent -> relevant homepage section
+/services  /#services  301
+/services/  /#services  301
+/case-studies  /#case-results  301
+/case-studies/  /#case-results  301
