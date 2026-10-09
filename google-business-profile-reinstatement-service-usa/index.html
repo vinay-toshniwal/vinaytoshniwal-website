@@ -188,6 +188,9 @@
   .xf__box p{margin:0 0 14px;color:#fff;font-size:15px;line-height:1.55}
   .xf__box textarea{display:block;width:100%;box-sizing:border-box;height:84px;resize:none;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:15px;padding:10px 12px}
   .xf__box textarea:focus{outline:2px solid #c9a84c;outline-offset:1px}
+  .xf__l{display:block;margin:12px 0 6px;font-size:14px;color:rgba(255,255,255,.85)}
+  .xf__box input{display:block;width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:15px;padding:10px 12px}
+  .xf__box input:focus{outline:2px solid #c9a84c;outline-offset:1px}
   .xf__box button.xf__send{margin-top:10px;float:right;border:0;border-radius:999px;background:#c9a84c;color:#0d1b2e;font:inherit;font-weight:600;font-size:14px;padding:8px 20px;cursor:pointer}
   .xf__box button.xf__send:disabled{opacity:.5;cursor:default}
   .cm__form{display:none;margin-top:6px}
@@ -458,6 +461,8 @@
     <form id="xf-form">
       <p>Personal Note: If you are leaving can you give me a line of feedback so i can improve my website or page? as I know am the best to fix GBP</p>
       <textarea name="MultiLine" maxlength="500" aria-label="Your feedback" required></textarea>
+      <label class="xf__l" for="xf-email">Email (Optional)</label>
+      <input id="xf-email" name="Email" type="email" maxlength="120" autocomplete="email">
       <button class="xf__send" type="submit">Send</button>
     </form>
     <p id="xf-thanks" style="display:none;margin:0">Thank you.</p>
@@ -501,7 +506,7 @@
     var f=document.createElement('form');
     f.method='POST';f.target='xf-sink';
     f.action='https://forms.zohopublic.in/vinaytoshniwal/form/ExitFeedback/formperma/dwoYTj7NGBTG8Eg-GqfV973V3C04En6G6YSw7xsnsnA/htmlRecords/submit';
-    [['MultiLine',v],['zf_referrer_name',''],['zf_redirect_url',''],['zc_gad','']].forEach(function(p){var i=document.createElement('input');i.type='hidden';i.name=p[0];i.value=p[1];f.appendChild(i)});
+    [['MultiLine',v],['Email',form.Email.value.trim()],['zf_referrer_name',''],['zf_redirect_url',''],['zc_gad','']].forEach(function(p){var i=document.createElement('input');i.type='hidden';i.name=p[0];i.value=p[1];f.appendChild(i)});
     document.body.appendChild(f);f.submit();
     try{window.gtag&&gtag('event','exit_feedback_submit',{page_path:location.pathname})}catch(x){}
     form.style.display='none';document.getElementById('xf-thanks').style.display='block';
