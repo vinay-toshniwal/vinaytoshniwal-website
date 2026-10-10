@@ -485,11 +485,11 @@
   function close(){box.classList.remove('open')}
   // Desktop: cursor leaves through the top of the window
   document.documentElement.addEventListener('mouseleave',function(e){if(e.clientY<=0&&Date.now()-t0>5000)show()});
-  // Mobile: after 45s, a fast scroll back up
+  // Mobile: after 30s, a fast scroll back up
   var lastY=window.scrollY,lastT=Date.now();
   window.addEventListener('scroll',function(){
     var y=window.scrollY,n=Date.now();
-    if(matchMedia('(pointer:coarse)').matches&&n-t0>45000&&lastY-y>250&&n-lastT<300)show();
+    if(matchMedia('(pointer:coarse)').matches&&n-t0>30000&&lastY-y>250&&n-lastT<300)show();
     lastY=y;lastT=n;
   },{passive:true});
   // Do not interrupt people who are contacting me
