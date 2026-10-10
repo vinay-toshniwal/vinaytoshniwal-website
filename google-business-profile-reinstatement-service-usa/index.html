@@ -495,7 +495,7 @@
   // Do not interrupt people who are contacting me
   document.addEventListener('click',function(e){
     var t=e.target;
-    if(t.closest&&(t.closest('[data-contact]')||t.closest('a[href*="wa.me"]')||t.closest('[data-book]')||t.closest('[data-cm-form]')))blocked=true;
+    if(t.closest&&(t.closest('a[href*="wa.me"]')||t.closest('[data-cm-form]')))blocked=true;
     if(t===box||(t.closest&&t.closest('[data-xf-close]')))close();
   });
   window.addEventListener('message',function(ev){try{
