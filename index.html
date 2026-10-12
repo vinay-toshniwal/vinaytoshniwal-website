@@ -4319,12 +4319,10 @@ Response time: usually within 12 to 24 hours.
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-    }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
-    const vhNow = window.innerHeight || document.documentElement.clientHeight;
-    const nearEls = [], farEls = [];
-    revealEls.forEach(el => { (isNearViewport(el, vhNow) ? nearEls : farEls).push(el); });
-    nearEls.forEach(el => el.classList.add('visible'));
-    farEls.forEach(el => io.observe(el));
+    }, { threshold: 0, rootMargin: '200px 0px 200px 0px' });
+    /* No per-element measuring at startup (avoids a forced reflow);
+       the observer reveals anything within 200px of the viewport. */
+    revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('visible'));
   }
