@@ -209,6 +209,78 @@
   @media(min-width:800px){.s2grid{grid-template-columns:1.2fr .8fr;gap:48px}.s2photo{margin-left:auto}}
   .amt span{white-space:nowrap}
   h2{text-wrap:balance}
+
+/* ===== site header / footer (same look as the rest of the site) ===== */
+  .sc-skip-link{position:absolute;left:16px;top:-48px;z-index:1001;background:var(--gold);color:var(--navy);padding:10px 14px;border-radius:10px;font-weight:700;transition:top .2s ease}
+  .sc-skip-link:focus{top:14px}
+  .sc-nav{position:sticky;top:0;z-index:1000;background:rgba(13,27,46,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .sc-nav__inner{display:flex;align-items:center;justify-content:space-between;padding-block:16px;min-height:78px;position:relative}
+  .sc-nav__logo{font-family:var(--font-display);font-size:20px;color:var(--white);display:flex;align-items:center;gap:10px;line-height:1}
+  .sc-nav__logo span{color:var(--gold)}
+  .sc-nav__links{display:flex;gap:32px;list-style:none}
+  .sc-nav__links a{font-size:14px;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.74);transition:color .2s}
+  .sc-nav__links a:hover,.sc-nav__links a.active{color:var(--gold)}
+  .sc-nav__cta{padding:10px 22px;font-size:14px}
+  .sc-nav__toggle{display:none;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;border:1px solid rgba(201,168,76,.18);background:rgba(255,255,255,.03);color:var(--white);cursor:pointer}
+  .sc-nav__toggle:hover,.sc-nav__toggle:focus-visible{border-color:rgba(201,168,76,.38);background:rgba(255,255,255,.05);outline:none}
+  .sc-nav__toggle-icon,.sc-nav__toggle-icon::before,.sc-nav__toggle-icon::after{display:block;width:18px;height:2px;border-radius:999px;background:currentColor;transition:transform .22s ease,opacity .22s ease,background .22s ease;content:''}
+  .sc-nav__toggle-icon{position:relative}
+  .sc-nav__toggle-icon::before{position:absolute;top:-6px;left:0}
+  .sc-nav__toggle-icon::after{position:absolute;top:6px;left:0}
+  .sc-nav__toggle[aria-expanded="true"] .sc-nav__toggle-icon{background:transparent}
+  .sc-nav__toggle[aria-expanded="true"] .sc-nav__toggle-icon::before{transform:translateY(6px) rotate(45deg)}
+  .sc-nav__toggle[aria-expanded="true"] .sc-nav__toggle-icon::after{transform:translateY(-6px) rotate(-45deg)}
+  .sc-mobile-menu{position:fixed;top:78px;left:12px;right:12px;display:block;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px) scale(.98);transition:opacity .22s ease,transform .22s ease,visibility .22s ease;background:rgba(10,21,38,.98);border:1px solid rgba(201,168,76,.12);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.24);backdrop-filter:blur(10px);z-index:1002;max-height:calc(100vh - 96px);overflow:auto}
+  .sc-mobile-menu.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+  .sc-mobile-menu__inner{padding:14px;display:grid;gap:8px}
+  .sc-mobile-menu a{display:block;color:rgba(255,255,255,.9);font-size:15px;font-weight:600;padding:14px;border-radius:10px;transition:background .18s ease,color .18s ease;line-height:1.3}
+  .sc-mobile-menu a:hover,.sc-mobile-menu a:focus-visible{color:var(--gold);background:rgba(255,255,255,.04);outline:none}
+  .sc-mobile-menu-overlay{position:fixed;inset:0;background:rgba(4,10,19,.42);backdrop-filter:blur(2px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease;z-index:1001}
+  .sc-mobile-menu-overlay.is-open{opacity:1;visibility:visible;pointer-events:auto}
+  body.menu-open{overflow:hidden}
+  .sc-footer{background:#08111e;padding-block:56px 26px;border-top:1px solid rgba(201,168,76,.1)}
+  .sc-footer__top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr;gap:24px;margin-bottom:28px;align-items:start}
+  .sc-footer__title{font-size:26px;color:var(--white);margin-bottom:8px}
+  .sc-footer__text,.sc-footer__list li,.sc-footer__list a{font-size:14px;color:rgba(255,255,255,.78);line-height:1.85}
+  .sc-footer__list{list-style:none}
+  .sc-footer__list a:hover{color:var(--gold)}
+  .sc-footer__label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .sc-footer__inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .sc-footer__bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px}
+  .sc-footer__copy{font-size:13px;color:rgba(255,255,255,.3);line-height:1.7}
+  .sc-footer__copy span{color:var(--gold)}
+  .sc-whatsapp-container{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;z-index:9999;font-family:inherit}
+  .sc-whatsapp-msg{background:#fff;color:#1f2937;padding:8px 12px;font-size:13px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.12);max-width:220px}
+  .sc-whatsapp-float{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .25s ease}
+  .sc-whatsapp-float:hover{transform:scale(1.08)}
+  .sc-whatsapp-float img{width:30px;height:30px}
+  .sc-nav__item{position:relative}
+  .sc-nav__item > a{display:flex;align-items:center;gap:5px}
+  .sc-nav__caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.7;transition:transform .18s ease}
+  .sc-nav__item:hover .sc-nav__caret,.sc-nav__item:focus-within .sc-nav__caret{transform:rotate(225deg);margin-top:2px}
+  .sc-nav__dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);min-width:240px;background:var(--navy-mid);border:1px solid rgba(201,168,76,.18);border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.35);padding:8px;list-style:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .16s ease,transform .16s ease;z-index:200}
+  .sc-nav__item:hover .sc-nav__dropdown,.sc-nav__item:focus-within .sc-nav__dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .sc-nav__dropdown a{display:block;padding:10px 14px;border-radius:8px;font-size:14px;color:rgba(255,255,255,.82);white-space:nowrap;transition:background .16s ease,color .16s ease}
+  .sc-nav__dropdown a:hover,.sc-nav__dropdown a:focus-visible{background:rgba(255,255,255,.06);color:var(--gold)}
+@media (max-width:900px){
+    .sc-mobile-submenu{display:grid;gap:2px;padding-left:14px;margin:2px 0 8px}
+    .sc-mobile-submenu a{font-size:14px;font-weight:500;padding:10px 14px;color:rgba(255,255,255,.7)}
+    .sc-mobile-menu-group__label{display:flex;align-items:center;justify-content:space-between;padding:14px;font-size:15px;font-weight:600;color:rgba(255,255,255,.9);cursor:pointer;border-radius:10px}
+    .sc-mobile-menu-group__label:hover{background:rgba(255,255,255,.04)}
+    .sc-mobile-menu-group__label .sc-nav__caret{border-color:rgba(255,255,255,.7);transition:transform .18s ease}
+    .sc-mobile-menu-group.is-open .sc-mobile-menu-group__label .sc-nav__caret{transform:rotate(225deg);margin-top:2px}
+    .sc-mobile-menu-group:not(.is-open) .sc-mobile-submenu{display:none}
+}
+
+.container{max-width:1180px;margin-inline:auto;padding-inline:clamp(20px,5vw,48px)}
+:root{--max-w:1180px;--navy-mid:#142338;--gold-light:#e2c27d;--font-display:'Sora',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+.sc-nav__cta{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:600;background:var(--gold);color:var(--navy);border:2px solid var(--gold);min-height:46px;box-shadow:0 10px 24px rgba(201,168,76,.18);transition:background .2s,transform .2s}
+.sc-nav__cta:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-1px)}
+.hero .brand{display:none}
+@media (max-width:1080px){.sc-footer__top{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.sc-nav__links,.sc-nav__cta{display:none}.sc-nav__toggle{display:inline-flex}.sc-nav__inner{min-height:70px}.sc-footer__top{grid-template-columns:1fr 1fr}.sc-footer__list a{display:inline-block;padding:6px 0}.sc-whatsapp-msg{display:none!important}}
+@media (max-width:560px){.sc-footer__top{grid-template-columns:1fr}}
+
 </style>
 <!-- Microsoft Clarity (session recordings and heatmaps) -->
 <script>
@@ -249,6 +321,70 @@
 }</script>
 </head>
 <body>
+<nav class="sc-nav" aria-label="Primary">
+  <div class="container sc-nav__inner">
+    <div id="top" aria-hidden="true"></div>
+    <a class="sc-nav__logo" href="/" aria-label="Vinay Toshniwal home">Vinay <span>Toshniwal</span></a>
+    <ul class="sc-nav__links">
+      <li class="sc-nav__item">
+        <a href="/#services">Services <span class="sc-nav__caret" aria-hidden="true"></span></a>
+        <ul class="sc-nav__dropdown">
+          <li><a href="/google-business-profile-reinstatement/">GBP Reinstatement</a></li>
+          <li><a href="/#services">Negative Review Removal</a></li>
+          <li><a href="/#services">Spam Business Profile Removal</a></li>
+          <li><a href="/#services">White Label Reinstatement</a></li>
+          <li><a href="/#services">GBP Compliance &amp; Protection</a></li>
+          <li><a href="/#services">GBP Live Training</a></li>
+        </ul>
+      </li>
+      <li><a href="/#why">Why Suspended</a></li>
+      <li><a href="/#reviews">Reviews</a></li>
+      <li class="sc-nav__item">
+        <a href="/blog/">Blog <span class="sc-nav__caret" aria-hidden="true"></span></a>
+        <ul class="sc-nav__dropdown">
+          <li><a href="/blog/">All Articles</a></li>
+          <li><a href="/blog/?category=help">Help</a></li>
+          <li><a href="/blog/?category=tips">Tips and Tricks</a></li>
+          <li><a href="/case-studies/">Case Studies</a></li>
+          <li><a href="/blog/?category=updates">Updates</a></li>
+        </ul>
+      </li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+    <a href="#contact-choice" class="sc-nav__cta" data-contact>Contact Vinay</a>
+    <button class="sc-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span class="sc-nav__toggle-icon"></span></button>
+  </div>
+</nav>
+<div class="sc-mobile-menu" id="mobile-menu" hidden>
+  <div class="container sc-mobile-menu__inner">
+    <div class="sc-mobile-menu-group">
+      <div class="sc-mobile-menu-group__label">Services <span class="sc-nav__caret" aria-hidden="true"></span></div>
+      <div class="sc-mobile-submenu">
+      <a href="/google-business-profile-reinstatement/">GBP Reinstatement</a>
+      <a href="/#services">Negative Review Removal</a>
+      <a href="/#services">Spam Business Profile Removal</a>
+      <a href="/#services">White Label Reinstatement</a>
+      <a href="/#services">GBP Compliance &amp; Protection</a>
+      <a href="/#services">GBP Live Training</a>
+      </div>
+    </div>
+    <a href="/#why">Why Suspended</a>
+    <a href="/#reviews">Reviews</a>
+    <div class="sc-mobile-menu-group">
+      <div class="sc-mobile-menu-group__label">Blog <span class="sc-nav__caret" aria-hidden="true"></span></div>
+      <div class="sc-mobile-submenu">
+      <a href="/blog/">All Articles</a>
+      <a href="/blog/?category=help">Help</a>
+      <a href="/blog/?category=tips">Tips and Tricks</a>
+      <a href="/case-studies/">Case Studies</a>
+      <a href="/blog/?category=updates">Updates</a>
+      </div>
+    </div>
+    <a href="/#about">About</a>
+    <a href="#contact-choice" data-contact>Contact Vinay</a>
+  </div>
+</div>
+
 
 <!-- 1. HERO -->
 <section class="hero dark" id="s1">
@@ -411,6 +547,118 @@
 
 <div class="foot">&copy; 2026 Vinay Toshniwal &middot; Google Business Profile Specialist &middot; <a href="https://vinaytoshniwal.com/privacy-policy/">Privacy Policy</a></div>
 
+<footer class="sc-footer">
+  <div class="container">
+    <div class="sc-footer__top">
+      <div>
+        <a href="/" class="sc-footer__title">Vinay Toshniwal</a>
+        <p class="sc-footer__text">Google Business Profile Product Expert specializing in suspended profile recovery, reinstatement, negative review removal, spam profile reporting, and white label support for legitimate businesses.</p>
+      </div>
+      <div>
+        <div class="sc-footer__label">Services</div>
+        <ul class="sc-footer__list">
+          <li><a href="/#services">GBP Reinstatement</a></li>
+          <li><a href="/#services">Negative Review Removal</a></li>
+          <li><a href="/#services">Spam Business Profile Removal</a></li>
+          <li><a href="/#services">White Label GBP Support</a></li>
+          <li><a href="/#services">GBP Live Training</a></li>
+          <li><a href="/#services">Compliance &amp; Protection</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sc-footer__label">Proof &amp; Profiles</div>
+        <ul class="sc-footer__list">
+          <li><a href="https://support.google.com/business/community-guide/289980627/meet-our-product-experts?hl=en#:~:text=on%C2%A0LinkedIn.-,Vinay%20Toshniwal,-Vinay%20is%20a" target="_blank" rel="noopener noreferrer">Official Google Shoutout</a></li>
+          <li><a href="https://support.google.com/profile/218018417?sjid=9664319273803298201" target="_blank" rel="noopener noreferrer">Google Expert Profile</a></li>
+          <li><a href="/#reviews">Google Reviews</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#about">About Vinay</a></li>
+          <li><a href="/#process">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sc-footer__label">Follow Vinay</div>
+        <ul class="sc-footer__list">
+          <li><a href="https://twitter.com/ivinaytoshniwal" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li><a href="https://www.linkedin.com/in/vinay-toshniwal-69972919b" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://www.youtube.com/@iamvinaytoshniwal" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li><a href="https://www.instagram.com/iamvinaytoshniwal" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com/unfakeitt/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sc-footer__label">Contact</div>
+        <ul class="sc-footer__list">
+          <li><a href="https://wa.me/message/PDXGXKVN2PPUF1">WhatsApp: +919494891008</a></li>
+          <li><a href="tel:+16095783179">USA: (609) 578-3179</a></li>
+          <li><a href="mailto:i@vinaytoshniwal.com">i@vinaytoshniwal.com</a></li>
+          <li><a href="https://vinaytoshniwal.com" target="_blank" rel="noopener noreferrer">vinaytoshniwal.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sc-footer__inner sc-footer__bottom">
+      <div class="sc-footer__copy">&copy; 2026 <a href="/" style="color:inherit;text-decoration:none;"><span>Vinay Toshniwal</span></a> &middot; Google Business Profile Specialist · <a href="/privacy-policy/" style="color:inherit;text-decoration:underline;">Privacy Policy</a> · <a href="https://support.google.com/business/answer/7163406" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Working With a Third Party</a></div>
+      <div class="sc-footer__copy">Follow <a href="https://www.linkedin.com/in/vinay-toshniwal-69972919b" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Vinay</a> for real-time Google Business Profile updates and insights.</div>
+    </div>
+  </div>
+</footer>
+<div class="sc-whatsapp-container">
+  <div class="sc-whatsapp-msg">Need help with a suspended profile?</div>
+  <a href="https://wa.me/message/PDXGXKVN2PPUF1" target="_blank" rel="noopener noreferrer" class="sc-whatsapp-float" aria-label="Chat on WhatsApp">
+    <img src="/assets/whatsapp.svg" alt="WhatsApp">
+  </a>
+</div>
+<script>
+(function(){
+  const toggle = document.querySelector('.sc-nav__toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (!toggle || !menu) return;
+  let overlay = document.querySelector('.sc-mobile-menu-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'sc-mobile-menu-overlay';
+    document.body.appendChild(overlay);
+  }
+  const links = menu.querySelectorAll('a');
+  let isOpen = false;
+  function sync(){
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    if (isOpen) {
+      menu.hidden = false;
+      requestAnimationFrame(() => {
+        menu.classList.add('is-open');
+        overlay.classList.add('is-open');
+      });
+      document.body.classList.add('menu-open');
+    } else {
+      menu.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
+      setTimeout(() => { if (!isOpen) menu.hidden = true; }, 220);
+    }
+  }
+  toggle.addEventListener('click', (e) => { e.preventDefault(); isOpen = !isOpen; sync(); }, {passive:false});
+  overlay.addEventListener('click', () => { isOpen = false; sync(); });
+  links.forEach(link => link.addEventListener('click', () => { isOpen = false; sync(); }));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { isOpen = false; sync(); } });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900 && isOpen) { isOpen = false; sync(); } });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.sc-mobile-menu-group__label').forEach(function(label){
+    label.setAttribute('role','button');
+    label.setAttribute('tabindex','0');
+    var group = label.closest('.sc-mobile-menu-group');
+    function toggle(){ group.classList.toggle('is-open'); }
+    label.addEventListener('click', toggle);
+    label.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
 <script>
 (function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
