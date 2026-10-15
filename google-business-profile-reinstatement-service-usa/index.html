@@ -706,7 +706,7 @@
   function close(){m.classList.remove('open','form')}
   document.addEventListener('click',function(e){
     var t=e.target;
-    if(t.closest&&t.closest('[data-contact]')){e.preventDefault();m.classList.add('open');if(window.gtag)gtag('event','contact_choice_open',{page_path:location.pathname});return}
+    if(t.closest&&t.closest('[data-contact]')){e.preventDefault();var f0=m.querySelector('iframe');if(!f0.src)f0.src=f0.dataset.src;m.classList.add('open','form');if(window.gtag){gtag('event','contact_choice_open',{page_path:location.pathname});gtag('event','contact_form_choice',{page_path:location.pathname})}return}
     if(t.closest&&t.closest('[data-cm-form]')){var f=m.querySelector('iframe');if(!f.src)f.src=f.dataset.src;m.classList.add('form');if(window.gtag)gtag('event','contact_form_choice',{page_path:location.pathname});return}
     if(t===m||(t.closest&&t.closest('[data-cm-close]')))close();
   });
