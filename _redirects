@@ -90,3 +90,9 @@
 # Legacy pages with no current equivalent -> relevant homepage section
 /services  /#services  301
 /services/  /#services  301
+
+# Old WordPress blog archive pages
+/blog/category/google-business-profile  /blog/  301
+/blog/category/google-business-profile/  /blog/  301
+/blog/author/vinaytoshniwal  /blog/  301
+/blog/author/vinaytoshniwal/  /blog/  301
