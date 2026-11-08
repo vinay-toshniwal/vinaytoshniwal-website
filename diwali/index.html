@@ -71,19 +71,13 @@ h1{
   filter:drop-shadow(0 0 18px rgba(255,150,40,.45));
 }
 .greet{margin:0;font-size:clamp(16px,2.6vw,22px);color:var(--ink);max-width:36ch;text-wrap:balance}
-.name{display:none;gap:8px;margin-top:4px;flex-wrap:wrap;justify-content:center}
-.name input{
-  width:min(250px,60vw);padding:9px 14px;border-radius:999px;border:1px solid var(--line);
-  background:var(--panel);color:var(--ink);font:inherit;font-size:16px;min-height:42px;
-}
-.name input::placeholder{color:var(--muted)}
-.btn,.name button{
+.btn{
   padding:10px 16px;min-height:42px;border-radius:999px;border:1px solid var(--line);
   background:var(--panel);color:var(--ink);font:600 14px/1 var(--body);cursor:pointer;
   transition:background .15s,border-color .15s,transform .1s;
 }
-.btn:hover,.name button:hover{background:rgba(255,201,77,.18);border-color:var(--gold)}
-.btn:active,.name button:active{transform:scale(.96)}
+.btn:hover{background:rgba(255,201,77,.18);border-color:var(--gold)}
+.btn:active{transform:scale(.96)}
 .btn.tog{background:transparent;border-style:dashed;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
 .btn.tog::before{content:"";width:9px;height:9px;border-radius:50%;border:1.5px solid var(--muted)}
 .btn.tog[aria-pressed="true"]{color:var(--ink);border-color:var(--gold);background:rgba(255,201,77,.12)}
@@ -91,6 +85,16 @@ h1{
 .btn.go{background:linear-gradient(180deg,var(--gold),var(--ember));color:#2a1005;border-color:transparent}
 .btn.go:hover{background:linear-gradient(180deg,#ffe08a,#ff8f3a)}
 button:focus-visible,input:focus-visible{outline:2px solid #fff;outline-offset:2px}
+[hidden]{display:none!important}
+.wishbtn{margin-top:2px;background:transparent;color:var(--gold);border-style:dashed}
+.wish{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:2px;width:min(420px,100%)}
+.wish .row,.wish .out{display:flex;gap:8px;width:100%;justify-content:center;flex-wrap:wrap}
+.wish input{
+  flex:1 1 180px;min-width:0;padding:9px 14px;border-radius:999px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);font:inherit;font-size:16px;min-height:42px;
+}
+.wish input::placeholder{color:var(--muted)}
+.wish .note{margin:0;font-size:13px;color:var(--muted);min-height:1.2em;text-shadow:0 1px 6px #000}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 .bottom{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;min-width:0;padding-bottom:6px}
@@ -113,10 +117,9 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
 
 @media (max-height:640px){
   .kicker{display:none}
-  .name{display:none}
 }
 @media (max-height:480px){
-  .hint,.sign{display:none}
+  .hint,.sign,.wishbtn,.wish{display:none}
   h1{font-size:34px}
   .greet{font-size:14px}
   .diya{width:40px}
@@ -140,10 +143,18 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     <p class="kicker">Festival of lights</p>
     <h1>Shubh Deepavali</h1>
     <p class="greet" id="greet">Wishing you light, health and prosperity.</p>
-    <form class="name" id="nameForm" autocomplete="off">
-      <label class="sr" for="nameIn">Name for the greeting</label>
-      <input id="nameIn" maxlength="24" placeholder="Add a name to the greeting">
-      <button type="submit">Greet</button>
+    <button class="btn wishbtn" id="wishBtn" type="button" aria-expanded="false" aria-controls="wishPanel">Wish a loved one</button>
+    <form class="wish" id="wishPanel" hidden autocomplete="off">
+      <label class="sr" for="nameIn">Their name</label>
+      <div class="row">
+        <input id="nameIn" maxlength="24" placeholder="Their name, in English letters">
+        <button class="btn go" type="submit">Create link</button>
+      </div>
+      <div class="out" id="wishOut" hidden>
+        <input id="wishLink" readonly aria-label="Link to share">
+        <button class="btn" id="wishCopy" type="button">Copy wish</button>
+      </div>
+      <p class="note" id="wishNote" aria-live="polite">Type a name, then copy the wish and send it on WhatsApp.</p>
     </form>
   </header>
 
@@ -572,30 +583,70 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     }
   });
 
-  /* greeting */
+  /* greeting and wish links */
+  var BASE = 'https://vinaytoshniwal.com/diwali/';
   var greet = document.getElementById('greet');
   var nameIn = document.getElementById('nameIn');
+  var wishBtn = document.getElementById('wishBtn');
+  var wishPanel = document.getElementById('wishPanel');
+  var wishOut = document.getElementById('wishOut');
+  var wishLink = document.getElementById('wishLink');
+  var wishNote = document.getElementById('wishNote');
   var currentSlug = '';
   function setName(n){
     greet.textContent = n ? 'Happy Diwali, ' + n + '.' : 'Wishing you light, health and prosperity.';
   }
-  function slugOf(s){ return s.replace(/[^A-Za-z]/g, '').slice(0, 24); }
+  function slugOf(name){
+    return name.split(/\s+/).map(function(w){
+      w = w.replace(/[^A-Za-z]/g, '');
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }).join('').slice(0, 30);
+  }
+  function nameOf(slug){ return slug.replace(/([a-z])([A-Z])/g, '$1 $2'); }
   function fromHash(){
     var h = (location.hash || '').replace('#', '');
-    if (/^[A-Za-z]{1,24}$/.test(h) && h !== currentSlug){
+    if (/^[A-Za-z]{1,30}$/.test(h) && h !== currentSlug){
       currentSlug = h;
-      setName(h);
-      nameIn.value = h;
+      setName(nameOf(h));
     }
   }
-  document.getElementById('nameForm').addEventListener('submit', function(e){
+  wishBtn.addEventListener('click', function(){
+    var open = wishPanel.hidden;
+    wishPanel.hidden = !open;
+    wishBtn.setAttribute('aria-expanded', String(open));
+    if (open) nameIn.focus();
+  });
+  var wishText = '';
+  wishPanel.addEventListener('submit', function(e){
     e.preventDefault();
     audio();
     var v = nameIn.value.trim().slice(0, 24);
-    setName(v);
-    currentSlug = slugOf(v);
-    try { location.hash = currentSlug; } catch (err) {}
-    if (v) finale(5);
+    var slug = slugOf(v);
+    if (!slug){
+      wishOut.hidden = true;
+      wishNote.textContent = 'Please type a name using English letters.';
+      return;
+    }
+    var shown = nameOf(slug);
+    setName(shown);
+    currentSlug = slug;
+    var link = BASE + '#' + slug;
+    wishLink.value = link;
+    wishText = 'Happy Diwali, ' + shown + '! Wishing you light, health and prosperity. Burst some crackers online with me here: ' + link;
+    wishOut.hidden = false;
+    wishNote.textContent = 'Your wish for ' + shown + ' is ready.';
+    finale(4);
+  });
+  document.getElementById('wishCopy').addEventListener('click', function(){
+    function fallback(){
+      wishLink.focus(); wishLink.select();
+      wishNote.textContent = 'Link selected. Copy it and send it on WhatsApp.';
+    }
+    try {
+      navigator.clipboard.writeText(wishText).then(function(){
+        wishNote.textContent = 'Wish copied. Paste it in WhatsApp.';
+      }, fallback);
+    } catch (err) { fallback(); }
   });
   window.addEventListener('hashchange', fromHash);
   fromHash();
