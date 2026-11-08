@@ -348,11 +348,18 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     launch(rnd(W * .12, W * .88), rnd(H * .1, H * .5));
   }
 
+  function groundY(){
+    var b = document.querySelector('.bottom');
+    return b ? b.getBoundingClientRect().top - 24 : H - 150;
+  }
+
   function anar(x){
     hiss(4, .1, 3000);
-    var gy = H - 78, life = 0;
+    var gy = groundY(), life = 0;
     E.push({dur: 240, update: function(dt){
       life += dt;
+      ctx.save(); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.fillStyle = '#b5481a';
+      ctx.beginPath(); ctx.moveTo(x - 10, gy + 22); ctx.lineTo(x + 10, gy + 22); ctx.lineTo(x + 6, gy); ctx.lineTo(x - 6, gy); ctx.closePath(); ctx.fill(); ctx.restore();
       for (var i = 0; i < 6; i++){
         spark(x + rnd(-3, 3), gy, rnd(-1.4, 1.4), -rnd(5, 10.5) * K, pick(['#ffe08a', '#ffc94d', '#ff9d2e', '#fff']), rnd(36, 70), rnd(1.4, 2.4), .13, .985, true);
       }
@@ -363,7 +370,7 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
 
   function chakri(x){
     hiss(4.8, .08, 2400);
-    var gy = H - 80, ang = 0, drift = rnd(-.5, .5), cx = x, tt = 0, dur = 300;
+    var gy = groundY(), ang = 0, drift = rnd(-.5, .5), cx = x, tt = 0, dur = 300;
     E.push({dur: dur, update: function(dt){
       tt += dt;
       var speed = .25 + Math.sin(Math.PI * tt / dur) * .55;
@@ -382,7 +389,7 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     for (var i = 0; i < n; i++){
       (function(i){
         setTimeout(function(){
-          var x = x0 + i * step, y = H - 82;
+          var x = x0 + i * step, y = groundY() + 16;
           pop(.45); flash(x, y, 70 * K, '#fff3c4', 5);
           for (var k = 0; k < 22; k++){
             var a = rnd(0, 6.283), sp = rnd(.8, 3.2) * K;
