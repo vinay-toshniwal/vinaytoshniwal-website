@@ -47,10 +47,10 @@ body{
 .stars{inset:0;z-index:0}
 .star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:tw 3s ease-in-out infinite alternate}
 @keyframes tw{from{opacity:.15}to{opacity:.9}}
-.mandala{left:50%;bottom:-46vmin;width:104vmin;height:104vmin;margin-left:-52vmin;z-index:1;opacity:.22}
+.mandala{left:50%;top:50%;width:88vmin;height:88vmin;margin:-44vmin 0 0 -44vmin;z-index:1;opacity:.15}
 .mandala svg{width:100%;height:100%;animation:spin 140s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-#sky{position:fixed;inset:0;z-index:2;touch-action:manipulation;cursor:crosshair}
+#sky{position:fixed;inset:0;z-index:2;touch-action:none;cursor:crosshair}
 .skyline{left:0;right:0;bottom:0;height:70px;width:100%;z-index:3}
 .win{animation:tw 2.4s ease-in-out infinite alternate;fill:#ffcf70}
 
@@ -74,17 +74,20 @@ h1{
 .name{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;justify-content:center}
 .name input{
   width:min(250px,60vw);padding:9px 14px;border-radius:999px;border:1px solid var(--line);
-  background:var(--panel);color:var(--ink);font:inherit;font-size:15px;
+  background:var(--panel);color:var(--ink);font:inherit;font-size:16px;min-height:42px;
 }
 .name input::placeholder{color:var(--muted)}
 .btn,.name button{
-  padding:9px 16px;border-radius:999px;border:1px solid var(--line);
+  padding:10px 16px;min-height:42px;border-radius:999px;border:1px solid var(--line);
   background:var(--panel);color:var(--ink);font:600 14px/1 var(--body);cursor:pointer;
   transition:background .15s,border-color .15s,transform .1s;
 }
 .btn:hover,.name button:hover{background:rgba(255,201,77,.18);border-color:var(--gold)}
 .btn:active,.name button:active{transform:scale(.96)}
-.btn[aria-pressed="true"]{background:rgba(255,122,26,.3);border-color:var(--ember)}
+.btn.tog{background:transparent;border-style:dashed;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.btn.tog::before{content:"";width:9px;height:9px;border-radius:50%;border:1.5px solid var(--muted)}
+.btn.tog[aria-pressed="true"]{color:var(--ink);border-color:var(--gold);background:rgba(255,201,77,.12)}
+.btn.tog[aria-pressed="true"]::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 8px var(--gold)}
 .btn.go{background:linear-gradient(180deg,var(--gold),var(--ember));color:#2a1005;border-color:transparent}
 .btn.go:hover{background:linear-gradient(180deg,#ffe08a,#ff8f3a)}
 button:focus-visible,input:focus-visible{outline:2px solid #fff;outline-offset:2px}
@@ -111,6 +114,15 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
 @media (max-height:640px){
   .kicker{display:none}
   .name{display:none}
+}
+@media (max-height:480px){
+  .hint,.sign{display:none}
+  h1{font-size:34px}
+  .greet{font-size:14px}
+  .diya{width:40px}
+  .bottom{gap:6px}
+  .tray{gap:6px}
+  .btn{padding:8px 12px;min-height:36px;font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){
   .star,.win,.mandala svg,.diya[aria-pressed="true"] .flame{animation:none}
@@ -144,10 +156,10 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
       <button class="btn" data-act="anar" type="button">Anar</button>
       <button class="btn" data-act="chakri" type="button">Chakri</button>
       <button class="btn" data-act="laddi" type="button">Laddi</button>
-      <button class="btn" data-act="sparkler" type="button" aria-pressed="false">Sparkler</button>
       <button class="btn go" data-act="finale" type="button">Finale</button>
-      <button class="btn" data-act="auto" type="button" aria-pressed="true">Auto show</button>
-      <button class="btn" data-act="sound" type="button" aria-pressed="true">Sound on</button>
+      <button class="btn tog" data-act="sparkler" type="button" aria-pressed="false">Sparkler</button>
+      <button class="btn tog" data-act="auto" type="button" aria-pressed="true">Auto show</button>
+      <button class="btn tog" data-act="sound" type="button" aria-pressed="true">Sound</button>
     </div>
     <p class="sign">With love from Vinay Toshniwal</p>
   </section>
@@ -348,11 +360,18 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     launch(rnd(W * .12, W * .88), rnd(H * .1, H * .5));
   }
 
+  function groundY(){
+    var b = document.querySelector('.bottom');
+    return b ? b.getBoundingClientRect().top - 24 : H - 150;
+  }
+
   function anar(x){
     hiss(4, .1, 3000);
-    var gy = H - 78, life = 0;
+    var gy = groundY(), life = 0;
     E.push({dur: 240, update: function(dt){
       life += dt;
+      ctx.save(); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.fillStyle = '#b5481a';
+      ctx.beginPath(); ctx.moveTo(x - 10, gy + 22); ctx.lineTo(x + 10, gy + 22); ctx.lineTo(x + 6, gy); ctx.lineTo(x - 6, gy); ctx.closePath(); ctx.fill(); ctx.restore();
       for (var i = 0; i < 6; i++){
         spark(x + rnd(-3, 3), gy, rnd(-1.4, 1.4), -rnd(5, 10.5) * K, pick(['#ffe08a', '#ffc94d', '#ff9d2e', '#fff']), rnd(36, 70), rnd(1.4, 2.4), .13, .985, true);
       }
@@ -363,7 +382,7 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
 
   function chakri(x){
     hiss(4.8, .08, 2400);
-    var gy = H - 80, ang = 0, drift = rnd(-.5, .5), cx = x, tt = 0, dur = 300;
+    var gy = groundY(), ang = 0, drift = rnd(-.5, .5), cx = x, tt = 0, dur = 300;
     E.push({dur: dur, update: function(dt){
       tt += dt;
       var speed = .25 + Math.sin(Math.PI * tt / dur) * .55;
@@ -382,7 +401,7 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     for (var i = 0; i < n; i++){
       (function(i){
         setTimeout(function(){
-          var x = x0 + i * step, y = H - 82;
+          var x = x0 + i * step, y = groundY() + 16;
           pop(.45); flash(x, y, 70 * K, '#fff3c4', 5);
           for (var k = 0; k < 22; k++){
             var a = rnd(0, 6.283), sp = rnd(.8, 3.2) * K;
@@ -508,7 +527,6 @@ body.all-lit h1{filter:drop-shadow(0 0 28px rgba(255,170,40,.85))}
     else if (act === 'sound'){
       soundOn = !soundOn;
       b.setAttribute('aria-pressed', String(soundOn));
-      b.textContent = soundOn ? 'Sound on' : 'Sound off';
     }
   });
 
