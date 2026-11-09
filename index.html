@@ -2727,13 +2727,17 @@ margin-top:auto;
       ],
       "areaServed": ["US", "CA", "GB", "AU", "IN", "AE"],
       "priceRange": "$$",
-      "serviceType": [
-        "Google Business Profile Reinstatement",
-        "Negative Review Removal",
-        "Spam Business Profile Removal",
-        "GBP Compliance Audits",
-        "White Label Reinstatement"
-      ]
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Google Business Profile Services",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Business Profile Reinstatement"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Negative Review Removal"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Spam Business Profile Removal"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "GBP Compliance Audits"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "White Label Reinstatement"}}
+        ]
+      }
     },
     {
       "@type": "Person",
